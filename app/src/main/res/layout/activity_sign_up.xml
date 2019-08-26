@@ -15,6 +15,7 @@
         android:background="@color/colorPrimary"
         >
         <ImageView
+            android:id="@+id/iv_join_arrow_back"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:layout_width="35dp"
@@ -59,21 +60,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="20dp">
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
 
-        <EditText
-            android:id="@+id/et_sign_up_id"
-            android:layout_marginTop="30dp"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="아이디"
-            android:textColorHint="#9b9b9b"
-            android:textSize="16sp"
-            android:textColor="#6fccd7"
-            android:lineSpacingExtra="10sp"
-            android:singleLine="true"
-            android:theme="@style/EditTheme"
-            />
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+
+                android:id="@+id/et_sign_up_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="아이디"
+                android:lineSpacingExtra="10sp"
+                android:singleLine="true"
+                android:textColor="#6fccd7"
+                android:textColorHint="#9b9b9b"
+                android:textSize="16sp"
+                android:theme="@style/EditTheme" />
+
+            <Button
+                android:id="@+id/btn_duplicate_check"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_gravity="right|center"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/login_button_selector"
+                android:text="중복확인"
+                android:textColor="@color/login_text_selector" />
+
+        </FrameLayout>
 
         <EditText
             android:id="@+id/et_sign_up_password"
@@ -154,23 +173,26 @@
                 />
         </LinearLayout>
 
-        <LinearLayout
+        <RadioGroup
+            android:paddingTop="15dp"
+            android:id="@+id/rg_food_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-           >
+            >
 
             <RadioButton
+                android:id="@+id/btn_radio_food_1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:button="@drawable/custom_radio_button"
                 android:padding="5dp"
                 android:text="일식"
-                android:textSize="16sp"></RadioButton>s
+                android:textSize="16sp"></RadioButton>
 
             <RadioButton
+                android:id="@+id/btn_radio_food_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -180,6 +202,7 @@
                 android:textSize="16sp"></RadioButton>
 
             <RadioButton
+                android:id="@+id/btn_radio_food_3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -189,6 +212,7 @@
                 android:textSize="16sp"></RadioButton>
 
             <RadioButton
+                android:id="@+id/btn_radio_food_4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -198,6 +222,7 @@
                 android:textSize="16sp"></RadioButton>
 
             <RadioButton
+                android:id="@+id/btn_radio_food_5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -206,16 +231,15 @@
                 android:text="분식"
                 android:textSize="16sp"></RadioButton>
 
-
-        </LinearLayout>
-        <LinearLayout
+        </RadioGroup>
+        <RadioGroup
+            android:id="@+id/rg_food_2"
+            android:paddingTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            >
-
+            android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/btn_radio_food_6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -225,6 +249,7 @@
                 android:textSize="16sp"></RadioButton>
 
             <RadioButton
+                android:id="@+id/btn_radio_food_7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -234,6 +259,7 @@
                 android:textSize="16sp"></RadioButton>
 
             <RadioButton
+                android:id="@+id/btn_radio_food_8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -241,9 +267,8 @@
                 android:padding="5dp"
                 android:text="기타"
                 android:textSize="16sp"></RadioButton>
+        </RadioGroup>
 
-
-        </LinearLayout>
 
     </LinearLayout>
 
