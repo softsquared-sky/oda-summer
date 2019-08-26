@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6fccd7</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorGray">#9b9b9b</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="cursorColor">#6fccd7</color>
+    <color name="nomalColor">#1e000000</color>
+
+    <color name="colorWhite">#ffffff</color>
+
+    <drawable name="bg_select">#6fccd7</drawable>
+    <drawable name="bg">#FFFFFF</drawable>
+
+</resources>
+
