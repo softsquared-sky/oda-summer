@@ -15,20 +15,22 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
-        <activity android:name="com.softsquared.oda.src.signUp.SignUpActivity"></activity>
+        <activity
+            android:name="com.softsquared.oda.src.search.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:theme="@style/AppTheme" />
+        <activity android:name="com.softsquared.oda.src.signUp.SignUpActivity" />
         <activity android:name=".src.main.MainActivity" />
         <activity
             android:name="com.softsquared.oda.src.splash.SplashActivity"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.softsquared.oda.src.login.LoginActivity"
-            />
+        <activity android:name="com.softsquared.oda.src.login.LoginActivity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

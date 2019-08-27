@@ -8,9 +8,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.softsquared.oda.src.BaseActivity;
 import com.softsquared.odaproject.R;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends BaseActivity {
 
     RadioGroup mBtnRgFood1,mBtnRgFood2;
     private RadioGroup.OnCheckedChangeListener listener1 = new RadioGroup.OnCheckedChangeListener() {

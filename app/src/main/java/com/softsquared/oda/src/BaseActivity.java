@@ -11,7 +11,7 @@ import com.softsquared.odaproject.R;
 
 
 @SuppressLint("Registered")
-public class BaseActivity extends Activity {
+public class BaseActivity extends AppCompatActivity {
     public ProgressDialog mProgressDialog;
 
     public void showCustomToast(final String message) {

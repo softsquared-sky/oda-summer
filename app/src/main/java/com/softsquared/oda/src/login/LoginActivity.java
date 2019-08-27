@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.softsquared.oda.src.BaseActivity;
+import com.softsquared.oda.src.search.SearchActivity;
 import com.softsquared.oda.src.signUp.SignUpActivity;
 import com.softsquared.odaproject.R;
 
@@ -80,6 +80,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.btn_login:
                 Toast.makeText(this, "btn_login", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, SearchActivity.class)); // 8,26 오후 8시
 
 //                tryGetTest();
                 break;
