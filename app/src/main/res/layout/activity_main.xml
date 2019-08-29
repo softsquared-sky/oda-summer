@@ -1,26 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
     tools:context=".src.main.MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/main_tv_hello_world"
-        android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/main_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="오다"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="25sp" />
+
+
+
+            <ImageView
+                android:layout_toLeftOf="@+id/iv_main_shopping_cart"
+                android:id="@+id/iv_main_search"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_search" />
+
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:id="@+id/iv_main_shopping_cart"
+                android:layout_margin="15dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_shopping_cart"/>
+
+        </RelativeLayout>
+    </FrameLayout>
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/sv_main_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="410dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/main_image1" />
+
+            <ImageView
+                android:layout_width="410dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/main_image1" />
+            <ImageView
+            android:layout_width="410dp"
+            android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/main_image1" />
+
+
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_main_order_list"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Hello World!" />
+        android:layout_marginBottom="60dp"
+        android:scrollbars="vertical"
+        />
 
-    <Button
-        android:id="@+id/main_btn_hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/main_tv_hello_world"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:onClick="customOnClick"
-        android:text="@string/app_name" />
+            <LinearLayout
+                android:id="@+id/linearlayout1"
+                android:layout_above="@+id/linearlayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal">
 
 
-</RelativeLayout>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_custom_main_bottom_home"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_custom_main_bottom_category_gray"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_custom_main_bottom_tip_gray"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_custom_main_bottom_mypage_gray"
+                    />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_alignParentBottom="true"
+                android:id="@+id/linearlayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="홈"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="카테고리"
+                    android:gravity="center"
+                    android:textColor="@color/colorGray"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="꿀팁"
+                    android:gravity="center"
+                    android:textColor="@color/colorGray"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="마이페이지"
+                    android:gravity="center"
+                    android:textColor="@color/colorGray"
+                    android:textSize="14sp"
+                    />
+
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+
+    </FrameLayout>
+
+
+
+</LinearLayout>
+

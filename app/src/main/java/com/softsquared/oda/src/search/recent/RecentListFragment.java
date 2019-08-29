@@ -24,6 +24,8 @@ import com.softsquared.odaproject.R;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import static com.softsquared.oda.src.ApplicationClass.sSharedPreferences;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,7 +37,7 @@ public class RecentListFragment extends Fragment {
     private ArrayList<RecentListViewItem> mLvRecentItemList= new ArrayList<>();;
     private RecentListViewAdapter mLvRecentAdapter;
     private ListView mLvRecentList;
-    private SharedPreferences mSharedPref;
+//    private SharedPreferences mSharedPref;
     private Gson gson;
 
     public RecentListFragment() {
@@ -50,9 +52,10 @@ public class RecentListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_recent_list, container, false);
         // Inflate the layout for this fragment
 
-        mSharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+//        mSharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
         gson = new Gson();
-        String json = mSharedPref.getString("recentList", "");
+        String json = sSharedPreferences.getString("recentList", "");
         Type type = new TypeToken<ArrayList<RecentListViewItem>>() {
         }.getType();
         if (gson.fromJson(json, type) != null) {
@@ -87,7 +90,7 @@ public class RecentListFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        SharedPreferences.Editor editor = mSharedPref.edit();
+        SharedPreferences.Editor editor = sSharedPreferences.edit();
         String json = gson.toJson(mLvRecentItemList);
         editor.putString("recentList", json);
         editor.commit();

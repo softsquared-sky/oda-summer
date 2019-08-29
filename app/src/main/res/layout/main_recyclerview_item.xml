@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_main_recommend_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/main_image1"/>
+
+        <CheckBox
+            android:id="@+id/cb_main_oda_check"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_check_box"
+            android:button="@null"
+            />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_main_oda_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="알랄라aaaaaaaaaaaa"/>
+    <TextView
+        android:id="@+id/tv_main_oda_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="오다가 9000"/>
+</LinearLayout>

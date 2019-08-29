@@ -89,6 +89,7 @@ public class RecentListViewAdapter extends BaseAdapter {
     public void addItem(String title) {
         RecentListViewItem item = new RecentListViewItem();
         item.setTitle(title);
-        mLvRecentItemList.add(item);
+        mLvRecentItemList.add(0,item);
+        //stackfrombottom 미 적용으로 인해 직접 0번부터 채워 넣는다.
     }
 }

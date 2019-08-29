@@ -31,6 +31,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.softsquared.oda.src.login.LoginActivity" />
+        <activity android:name="com.softsquared.oda.src.main.MainActivity"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
