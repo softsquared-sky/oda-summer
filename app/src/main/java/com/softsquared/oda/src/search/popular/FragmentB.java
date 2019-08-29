@@ -1,4 +1,4 @@
-package com.softsquared.oda.src.search.fragment;
+package com.softsquared.oda.src.search.popular;
 
 
 import android.os.Bundle;
@@ -18,12 +18,6 @@ public class FragmentB extends Fragment {
 
     public FragmentB() {
         // Required empty public constructor
-    }
-    public static FragmentB newInstance(){
-        Bundle args = new Bundle();
-        FragmentB fragment = new FragmentB();
-        fragment.setArguments(args);
-        return fragment;
     }
 
 

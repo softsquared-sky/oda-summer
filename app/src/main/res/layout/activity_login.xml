@@ -49,7 +49,9 @@
                 android:textColor="#6fccd7"
                 android:lineSpacingExtra="10sp"
                 android:singleLine="true"
-                android:theme="@style/EditTheme"/>
+                android:theme="@style/EditTheme"
+                android:inputType="text"
+                android:nextFocusDown="@id/et_login_password"/>
 
 
             <EditText

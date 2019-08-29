@@ -26,17 +26,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_login);
 
         //findViewById
-
-        mEtId = (EditText)findViewById(R.id.et_login_id);
-        mEtPassword =  (EditText)findViewById(R.id.et_login_password);
+//
+//        mEtId = (EditText)findViewById(R.id.et_login_id);
+//        mEtPassword =  (EditText)findViewById(R.id.et_login_password);
         mBtnAutoLogin =  (Button) findViewById(R.id.auto_login);
         mTvFindPassword =  (TextView)findViewById(R.id.find_password);
         mBtnLogin =  (Button)findViewById(R.id.btn_login);
         mBtnJoin =  (Button)findViewById(R.id.btn_join);
 
-        //setOnClickListener
-        mEtId.setOnClickListener(this);
-        mEtPassword.setOnClickListener(this);
+//        //setOnClickListener
+//        mEtId.setOnClickListener(this);
+//        mEtPassword.setOnClickListener(this);
         mBtnAutoLogin.setOnClickListener(this);
         mTvFindPassword.setOnClickListener(this);
         mBtnLogin.setOnClickListener(this);
