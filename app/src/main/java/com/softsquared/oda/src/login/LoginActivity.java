@@ -10,12 +10,13 @@ import android.widget.Toast;
 
 
 import com.softsquared.oda.src.BaseActivity;
+import com.softsquared.oda.src.login.interfaces.LoginActivityView;
 import com.softsquared.oda.src.main.MainActivity;
 import com.softsquared.oda.src.search.SearchActivity;
 import com.softsquared.oda.src.signUp.SignUpActivity;
 import com.softsquared.odaproject.R;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener, LoginActivityView {
 
     EditText mEtId,mEtPassword;
     Button mBtnAutoLogin;
@@ -94,5 +95,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             default:
                 break;
         }
+    }
+
+    @Override
+    public void validateSuccess(String text) {
+
+    }
+
+    @Override
+    public void validateFailure(String message) {
+
     }
 }

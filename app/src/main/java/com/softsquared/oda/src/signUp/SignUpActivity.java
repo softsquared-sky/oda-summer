@@ -1,19 +1,117 @@
 package com.softsquared.oda.src.signUp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.softsquared.oda.src.BaseActivity;
+import com.softsquared.oda.src.login.LoginActivity;
+import com.softsquared.oda.src.signUp.interfaces.SignUpActivityView;
 import com.softsquared.odaproject.R;
 
-public class SignUpActivity extends BaseActivity {
+import org.json.JSONException;
 
-    RadioGroup mBtnRgFood1,mBtnRgFood2;
+public class SignUpActivity extends BaseActivity implements SignUpActivityView {
+
+    private EditText mEtSignUpId, mEtSignUpPassword, mEtSignUpPasswordCheck, mEtSignUpBusinessNumber, mEtSignUpAddress, mEtSignUpExtraAddress;
+    private RadioGroup mBtnRgFood1, mBtnRgFood2;
+    private Button mBtnSignUp;
+    private String mId, mPassword,mPasswordCheck, mAddress;
+    private int mType;
+    private boolean mTypeCheck=false;
+
+    public SignUpActivity() {
+        this.mId = "";
+        this.mPassword = "";
+        this.mPasswordCheck = "";
+        this.mAddress = "";
+        this.mType = 0;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sign_up);
+
+        mEtSignUpId = (EditText) findViewById(R.id.et_sign_up_id);
+        mEtSignUpPassword = (EditText) findViewById(R.id.et_sign_up_password);
+        mEtSignUpPasswordCheck = (EditText) findViewById(R.id.et_sign_up_password_check);
+        mEtSignUpBusinessNumber = (EditText) findViewById(R.id.et_sign_up_business_number);
+        mEtSignUpAddress = (EditText) findViewById(R.id.et_sign_up_address);
+        mEtSignUpExtraAddress = (EditText) findViewById(R.id.et_sign_up_extra_address);
+        mBtnSignUp =(Button)findViewById(R.id.btn_request_sign_up);
+
+        mBtnRgFood1 = (RadioGroup) findViewById(R.id.rg_food_1);
+        mBtnRgFood2 = (RadioGroup) findViewById(R.id.rg_food_2);
+
+
+        mBtnRgFood1.setOnCheckedChangeListener(listener1);
+        mBtnRgFood2.setOnCheckedChangeListener(listener2);
+
+
+        mBtnSignUp.setEnabled(false);
+    }
+
+    protected void onResume() {
+        super.onResume();
+        TextWatcher tw = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                checkSignUpButtonState();
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                checkSignUpButtonState();
+            }
+        };
+
+        mEtSignUpId.addTextChangedListener(tw);
+        mEtSignUpPassword.addTextChangedListener(tw);
+        mEtSignUpPasswordCheck.addTextChangedListener(tw);
+        mEtSignUpBusinessNumber.addTextChangedListener(tw);
+        mEtSignUpAddress.addTextChangedListener(tw);
+        mEtSignUpExtraAddress.addTextChangedListener(tw);
+    }
+
+    private void checkSignUpButtonState() {
+        //모든 editText가 활성화 될때
+        mBtnSignUp.setEnabled(mEtSignUpId.getText().length() > 0 &&
+                mEtSignUpPassword.getText().length() > 0 &&
+                mEtSignUpPasswordCheck.getText().length() > 0 &&
+                mEtSignUpBusinessNumber.getText().length() > 0 &&
+                mEtSignUpAddress.getText().length() > 0 &&
+                mEtSignUpExtraAddress.getText().length() > 0 &&
+                mType!=0);
+    }
+
+    private void tryLoginAccess(String id,String pw,int type,String address) {
+        showProgressDialog();
+
+        final SignUpService signUpService = new SignUpService(this);
+        try {
+            signUpService.getSignUp(id,pw,type,address);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //2개의 라디오 그룹을 리스너를 통해 하나로 묶어주는 방법
+
     private RadioGroup.OnCheckedChangeListener listener1 = new RadioGroup.OnCheckedChangeListener() {
 
         @Override
@@ -28,24 +126,26 @@ public class SignUpActivity extends BaseActivity {
                 int chkId2 = mBtnRgFood2.getCheckedRadioButtonId();
                 int realCheck = chkId1 == -1 ? chkId2 : chkId1;
 
-                RadioButton rb = (RadioButton)findViewById(realCheck);
-                switch (rb.getId()){
+                RadioButton rb = (RadioButton) findViewById(realCheck);
+                switch (rb.getId()) {
+
                     case R.id.btn_radio_food_1:
-                        Toast.makeText(SignUpActivity.this, "1", Toast.LENGTH_SHORT).show();
+                        mType =1;
                         break;
                     case R.id.btn_radio_food_2:
-                        Toast.makeText(SignUpActivity.this, "2", Toast.LENGTH_SHORT).show();
+                        mType =2;
                         break;
                     case R.id.btn_radio_food_3:
-                        Toast.makeText(SignUpActivity.this, "3", Toast.LENGTH_SHORT).show();
+                        mType=3;
                         break;
                     case R.id.btn_radio_food_4:
-                        Toast.makeText(SignUpActivity.this, "4", Toast.LENGTH_SHORT).show();
+                       mType=4;
                         break;
                     case R.id.btn_radio_food_5:
-                        Toast.makeText(SignUpActivity.this, "5", Toast.LENGTH_SHORT).show();
+                        mType=5;
                         break;
                 }
+                checkSignUpButtonState();
             }
         }
     };
@@ -64,34 +164,68 @@ public class SignUpActivity extends BaseActivity {
                 int chkId2 = mBtnRgFood2.getCheckedRadioButtonId();
                 int realCheck = chkId1 == -1 ? chkId2 : chkId1;
 
-                RadioButton rb = (RadioButton)findViewById(realCheck);
-                switch (rb.getId()){
+                RadioButton rb = (RadioButton) findViewById(realCheck);
+                switch (rb.getId()) {
                     case R.id.btn_radio_food_6:
-                        Toast.makeText(SignUpActivity.this, "6", Toast.LENGTH_SHORT).show();
+                        mType=6;
                         break;
                     case R.id.btn_radio_food_7:
-                        Toast.makeText(SignUpActivity.this, "7", Toast.LENGTH_SHORT).show();
+                        mType=7;
                         break;
                     case R.id.btn_radio_food_8:
-                        Toast.makeText(SignUpActivity.this, "8", Toast.LENGTH_SHORT).show();
+                        mType=8;
                         break;
                 }
+                checkSignUpButtonState();
             }
         }
     };
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+    public void validateSuccess(String text) {
+        hideProgressDialog();
 
-        mBtnRgFood1 = (RadioGroup)findViewById(R.id.rg_food_1);
-        mBtnRgFood2 = (RadioGroup)findViewById(R.id.rg_food_2);
+        System.out.println("Success"+text);
+        startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
+        finish();
 
-        mBtnRgFood1.setOnCheckedChangeListener(listener1);
-        mBtnRgFood2.setOnCheckedChangeListener(listener2);
-
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void validateFailure(@Nullable String message) {
+        hideProgressDialog();
+        System.out.println("Failure"+message);
+        showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
+    }
+
+
+
+    public void btn_join(View view) {
+
+        mId = mEtSignUpId.getText().toString();
+        mPassword = mEtSignUpPassword.getText().toString();
+        mPasswordCheck = mEtSignUpPasswordCheck.getText().toString();
+        mAddress = mEtSignUpAddress.getText().toString();
+        if(mId.length()!=0 && mPassword.length()!=0 && mPasswordCheck.length()!=0 && mAddress.length()!=0&&mType!=0){
+
+            System.out.println(mPassword+" "+mPasswordCheck+" "+(mPasswordCheck.equals(mPassword)));
+            if (mPasswordCheck.equals(mPassword)) {
+                System.out.println("btn_join내부 :"+mId+" "+mPassword+" "+mType+" "+mAddress);
+                tryLoginAccess(mId,mPassword,mType,mAddress);
+            }
+            else
+            {
+                Toast.makeText(this, "동일한 암호를 임력하세요.", Toast.LENGTH_SHORT).show();
+                mEtSignUpPasswordCheck.setFocusable(true);
+            }
+        }
+        else{
+            Toast.makeText(this, "값을 전부 입력해주세요", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 
 }

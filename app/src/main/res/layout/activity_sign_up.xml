@@ -277,8 +277,8 @@
         android:layout_height="match_parent">
 
         <Button
-            android:layout_gravity="bottom"
             android:id="@+id/btn_request_sign_up"
+            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:textColor="@color/login_text_selector"
@@ -286,6 +286,7 @@
             android:text="가입하기"
             android:textSize="25sp"
             android:textStyle="bold"
+            android:onClick="btn_join"
             android:enabled="true"/>
     </LinearLayout>
 
