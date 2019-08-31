@@ -27,6 +27,10 @@ public interface SignUpRetrofitInterface {
 //    @POST("/test")
 //    Call<DefaultResponse> postTest(@Body RequestBody params);
 
+    @GET("/id")
+    Call<SignUpResponse> idDupCheck(
+            @Query("id") final String id
+    );
     @POST("/user")
     Call<SignUpResponse> signUpCall(@Body RequestBody params);
 

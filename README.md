@@ -26,4 +26,7 @@ Popular은 미구현
 8.30 - SignUpActivity 기능 90%(중복확인API 미구현)
 버그 - 통신시에 콜백이 onFailure()로 바로 가는데 서버에서는 정상적으로 회원가입 API 성공
 
+8.31일 SignUpActivity setting 100%(서버 측  중복확인 API 미구현)
+통신문제 버그 해결
+ 
 

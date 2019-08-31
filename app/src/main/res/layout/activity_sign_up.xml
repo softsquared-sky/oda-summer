@@ -90,6 +90,7 @@
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/login_button_selector"
                 android:text="중복확인"
+                android:onClick="btn_duplicate_check"
                 android:textColor="@color/login_text_selector" />
 
         </FrameLayout>
@@ -281,8 +282,8 @@
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:textColor="@color/login_text_selector"
-            android:background="@drawable/login_button_selector"
+            android:textColor="@color/colorWhite"
+            android:background="@color/nomalColor"
             android:text="가입하기"
             android:textSize="25sp"
             android:textStyle="bold"

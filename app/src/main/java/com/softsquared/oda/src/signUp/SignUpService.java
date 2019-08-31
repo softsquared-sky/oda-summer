@@ -24,6 +24,45 @@ class SignUpService {
         this.mSignUpActivityView = signUpActivityView;
     }
 
+    void getDuplicationCheck(String id) throws JSONException{
+
+        final SignUpRetrofitInterface signUpRetrofitInterface = getRetrofit().create(SignUpRetrofitInterface.class);
+        signUpRetrofitInterface.idDupCheck(id).enqueue(new Callback<SignUpResponse>() {
+            @Override
+            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+                final SignUpResponse signUpResponse = response.body();
+
+                System.out.println(
+                        "Code :"+  signUpResponse.getCode()
+                                +"isSuccess :"+ signUpResponse.getIsSuccess()
+                                + "Message : "+  signUpResponse.getMessage()
+                );
+                if (signUpResponse == null) {
+                    mSignUpActivityView.validateFailure(null);
+                }
+                else if(signUpResponse.getCode()==100){
+                    //성공시 반환 코드
+                    mSignUpActivityView.validateSuccess(signUpResponse.getMessage(),signUpResponse.getCode());
+                    return;
+                }
+                else{
+                    mSignUpActivityView.validateFailure(signUpResponse.getMessage());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<SignUpResponse> call, Throwable t) {
+
+
+                mSignUpActivityView.validateFailure(null);
+            }
+        });
+
+
+
+    }
+
     void getSignUp(String id,String pw,int type,String address) throws JSONException {
         JSONObject params = new JSONObject();
         params.put("id",id);
@@ -44,19 +83,16 @@ class SignUpService {
                       + "Message : "+  signUpResponse.getMessage()
                 );
                 if (signUpResponse == null) {
-                    System.out.println("첫번째 if문");
                     mSignUpActivityView.validateFailure(null);
                 }
                 else if(signUpResponse.getCode()==200){
                     //성공시 반환 코드
-                    System.out.println("2번째 if문");
 
-                    mSignUpActivityView.validateSuccess(signUpResponse.getMessage());
+                    mSignUpActivityView.validateSuccess(signUpResponse.getMessage(),signUpResponse.getCode());
                     return;
                 }
                 else{
 
-                    System.out.println("3번째 if문");
                     mSignUpActivityView.validateFailure(signUpResponse.getMessage());
                 }
 
@@ -65,8 +101,6 @@ class SignUpService {
             @Override
             public void onFailure(Call<SignUpResponse> call, Throwable t) {
 
-                System.out.println(t.getCause());
-                System.out.println("아예 잘못된 값이 왔습니다");
                 mSignUpActivityView.validateFailure(null);
             }
         });
