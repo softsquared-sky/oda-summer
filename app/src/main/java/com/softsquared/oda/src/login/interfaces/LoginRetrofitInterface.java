@@ -24,5 +24,5 @@ public interface LoginRetrofitInterface {
 //    );
 
     @POST("/user/token")
-    Call<LoginResponse> postTest(@Body RequestBody params);
+    Call<LoginResponse> loginAccess(@Body RequestBody params);
 }
