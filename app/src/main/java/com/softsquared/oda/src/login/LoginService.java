@@ -3,8 +3,7 @@ package com.softsquared.oda.src.login;
 import com.softsquared.oda.src.login.interfaces.LoginActivityView;
 import com.softsquared.oda.src.login.interfaces.LoginRetrofitInterface;
 import com.softsquared.oda.src.login.models.LoginResponse;
-import com.softsquared.oda.src.main.models.DefaultResponse;
-
+import com.softsquared.oda.src.ApplicationClass;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,6 +40,7 @@ public class LoginService {
                 else if(loginResponse.getCode()==1200){
                     //로그인 성공 code 1200
                     mLoginActivityView.validateSuccess(loginResponse.getMessage());
+//                    ApplicationClass.X_ACCESS_TOKEN=loginResponse.getResult().getJwt();
                 }
                 else{
                     mLoginActivityView.validateFailure(loginResponse.getMessage());

@@ -30,3 +30,5 @@ Popular은 미구현
 통신문제 버그 해결
  
 
+9.1 Main UI 80% StickyHeader,맨위로 스크롤,FAB 미구현
+

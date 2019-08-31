@@ -15,7 +15,6 @@ public class LoginResponse {
         public String getJwt() { return jwt; }
     }
 
-
     @SerializedName("code")
     private int code;
 
@@ -24,6 +23,9 @@ public class LoginResponse {
 
     @SerializedName("isSuccess")
     private boolean isSuccess;
+
+
+    public Result getResult() { return result; }
 
     public int getCode() {
         return code;
@@ -37,5 +39,4 @@ public class LoginResponse {
         return isSuccess;
     }
 
-    public Result getResult() { return result; }
 }

@@ -18,31 +18,50 @@ import com.softsquared.oda.src.main.interfaces.MainActivityView;
 import java.security.cert.Certificate;
 import java.util.ArrayList;
 
+import static com.softsquared.oda.src.main.MainRecyclerViewAdapter.TYPE_FOOTER;
+import static com.softsquared.oda.src.main.MainRecyclerViewAdapter.TYPE_HEADER;
+
 public class MainActivity extends BaseActivity implements MainActivityView {
 
 
     ArrayList<MainRecyclerViewItem> mMainRvitem =new ArrayList<>();
-
     HorizontalScrollView mHorizonScrollView;
-
+    RecyclerView mRecyclerView;
+    GridLayoutManager mGridLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //findViewById
+        mRecyclerView = findViewById(R.id.rv_main_order_list) ;
         mHorizonScrollView = findViewById(R.id.sv_main_image);
 
+        //dummy
         for (int i=0;i<20;i++){
             mMainRvitem.add(new MainRecyclerViewItem(false,"","오다타이틀",10000));
         }
+
         // 리사이클러뷰에 GridLayoutManager 객체 지정.
-        RecyclerView recyclerView = findViewById(R.id.rv_main_order_list) ;
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3)) ;
+        mGridLayoutManager = new GridLayoutManager(this,3);
+        mRecyclerView.setLayoutManager(mGridLayoutManager) ;
+        final MainRecyclerViewAdapter adapter = new MainRecyclerViewAdapter(mMainRvitem,this) ;
 
         // 리사이클러뷰에 MainRecyclerViewAdapter 객체 지정.
-        MainRecyclerViewAdapter adapter = new MainRecyclerViewAdapter(mMainRvitem,this) ;
-        recyclerView.setAdapter(adapter) ;
+        mRecyclerView.setAdapter(adapter) ;
+
+        mGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (TYPE_HEADER == adapter.getItemViewType(position)) return 3;
+                else if(TYPE_FOOTER==adapter.getItemViewType(position)) return 3;
+                else return 1;
+            }
+
+        });
+
+
 
     }
 
