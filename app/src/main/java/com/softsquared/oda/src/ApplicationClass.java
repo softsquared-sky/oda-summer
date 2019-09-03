@@ -44,6 +44,7 @@ public class ApplicationClass extends Application {
     public void onCreate() {
         super.onCreate();
 
+        //singletone 패턴
         if (sSharedPreferences == null) {
             sSharedPreferences = getApplicationContext().getSharedPreferences(TAG, Context.MODE_PRIVATE);
         }

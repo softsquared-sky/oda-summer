@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_detail_review_thumnail"
+        android:layout_margin="15dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/ic_launcher"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:id="@+id/tv_detail_review_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/colorDark"
+        android:text="제목이 없습니다."
+        android:maxLength="10"
+        android:layout_toRightOf="@+id/iv_detail_review_thumnail"
+        android:layout_alignTop="@+id/iv_detail_review_thumnail"
+        />
+    <TextView
+        android:layout_alignTop="@+id/iv_detail_review_thumnail"
+        android:layout_toLeftOf="@+id/tv_detail_review_id"
+        android:id="@+id/tv_detail_review_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/colorDark"
+        android:gravity="end"
+        android:text="17/09/21"
+        />
+    <TextView
+        android:layout_marginLeft="4dp"
+        android:layout_marginEnd="15dp"
+        android:layout_alignTop="@+id/iv_detail_review_thumnail"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/tv_detail_review_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/colorDark"
+        android:text="djs****님"
+        />
+
+    <TextView
+
+        android:layout_marginEnd="15dp"
+        android:layout_toRightOf="@+id/iv_detail_review_thumnail"
+        android:layout_alignBottom="@+id/iv_detail_review_thumnail"
+        android:id="@+id/tv_detail_review_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="사실 직접 보고 산건 아니어서 좀 걱정스러웠는데 생각보다 육질이 꽤 부드러워서 만족스러웠어요."
+        />
+</RelativeLayout>

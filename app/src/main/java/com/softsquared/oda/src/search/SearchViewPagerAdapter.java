@@ -8,11 +8,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.softsquared.oda.src.search.recent.RecentListFragment;
 import com.softsquared.oda.src.search.popular.FragmentB;
 
-public class SearchViewpagerAdapter extends FragmentPagerAdapter {
+public class SearchViewPagerAdapter extends FragmentPagerAdapter {
     RecentListFragment recentListFragment;
     FragmentB fragmentB;
 
-    SearchViewpagerAdapter(FragmentManager fr) {
+    SearchViewPagerAdapter(FragmentManager fr) {
         super(fr);
         recentListFragment = new RecentListFragment();
         fragmentB = new FragmentB();
@@ -30,7 +30,7 @@ public class SearchViewpagerAdapter extends FragmentPagerAdapter {
         return null;
     }
 
-    private static int PAGE_NUMBER = 2; //생성할 프래그먼트 수, 나는 총 4개의 프래그먼트를 만들어줌!
+    private static int PAGE_NUMBER = 2; //생성할 프래그먼트 수
 
     @Override
     public int getCount() {

@@ -23,7 +23,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/arrow_back"/>
+                android:onClick="searchOnClick"
+                android:src="@drawable/ic_arrow_back"/>
 
             <EditText
                 android:id="@+id/et_search_keyword"
@@ -31,7 +32,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:background="@drawable/rectangle_shape"
+                android:background="@drawable/btn_rectangle_shape_white"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="10dp"
                 android:drawableTint="@color/colorGray"
@@ -39,11 +40,12 @@
                 android:textSize="14sp" />
 
             <ImageView
-                android:id="@+id/iv_shopping_cart"
+                android:id="@+id/iv_search_shopping_cart"
                 android:layout_margin="15dp"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="center_vertical"
+                android:onClick="searchOnClick"
                 android:src="@drawable/ic_shopping_cart"/>
 
         </LinearLayout>
@@ -53,13 +55,13 @@
             android:layout_height="10dp"
             android:background="@drawable/drop_shadow"/>
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout"
+        android:id="@+id/search_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:theme="@style/TabTheme"/>
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager"
+        android:id="@+id/search_viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>

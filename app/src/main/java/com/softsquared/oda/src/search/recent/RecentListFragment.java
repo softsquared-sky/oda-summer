@@ -1,20 +1,14 @@
 package com.softsquared.oda.src.search.recent;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -33,10 +27,10 @@ import static com.softsquared.oda.src.ApplicationClass.sSharedPreferences;
 public class RecentListFragment extends Fragment {
     //    ArrayList<RecentListViewItem> mRecentItemArrayList = new ArrayList<>();
 //   private RecentListViewAdapter mLvRecentAdapter;
-//    ListView mLvRecentList;
-    private ArrayList<RecentListViewItem> mLvRecentItemList= new ArrayList<>();;
+//    ListView mLvRecent;
+    private ArrayList<RecentListViewItem> mRecentItemList = new ArrayList<>();
     private RecentListViewAdapter mLvRecentAdapter;
-    private ListView mLvRecentList;
+    private ListView mLvRecent;
 //    private SharedPreferences mSharedPref;
     private Gson gson;
 
@@ -49,7 +43,7 @@ public class RecentListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recent_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_recent, container, false);
         // Inflate the layout for this fragment
 
 //        mSharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -59,15 +53,15 @@ public class RecentListFragment extends Fragment {
         Type type = new TypeToken<ArrayList<RecentListViewItem>>() {
         }.getType();
         if (gson.fromJson(json, type) != null) {
-            mLvRecentItemList = gson.fromJson(json, type);
+            mRecentItemList = gson.fromJson(json, type);
         } else {
         }
 
-//        LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_recent_list,container,false);
-        mLvRecentList = (ListView) view.findViewById(R.id.lv_recent_list);
-        mLvRecentAdapter = new RecentListViewAdapter(mLvRecentItemList,getActivity());
-        mLvRecentList.setAdapter(mLvRecentAdapter);
-        mLvRecentList.setStackFromBottom(true);
+//        LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_recent,container,false);
+        mLvRecent = (ListView) view.findViewById(R.id.lv_search_recent);
+        mLvRecentAdapter = new RecentListViewAdapter(mRecentItemList,getActivity());
+        mLvRecent.setAdapter(mLvRecentAdapter);
+        mLvRecent.setStackFromBottom(true);
 
         ((SearchActivity) getActivity()).refresh();
 
@@ -91,7 +85,7 @@ public class RecentListFragment extends Fragment {
     public void onStop() {
         super.onStop();
         SharedPreferences.Editor editor = sSharedPreferences.edit();
-        String json = gson.toJson(mLvRecentItemList);
+        String json = gson.toJson(mRecentItemList);
         editor.putString("recentList", json);
         editor.commit();
     }

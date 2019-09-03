@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.softsquared.odaproject">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.softsquared.oda.src.ApplicationClass"
         android:allowBackup="false"
@@ -14,26 +16,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
+        android:screenOrientation="portrait"
         tools:targetApi="n">
-        <activity
-            android:name="com.softsquared.oda.src.search.SearchActivity"
-            android:label="@string/title_activity_search"
-            android:theme="@style/AppTheme" />
+        <activity android:name="com.softsquared.oda.src.search.SearchActivity" />
         <activity android:name="com.softsquared.oda.src.signUp.SignUpActivity" />
-        <activity android:name=".src.main.MainActivity" />
-        <activity
-            android:name="com.softsquared.oda.src.splash.SplashActivity"
-            android:screenOrientation="portrait">
+        <activity android:name="com.softsquared.oda.src.main.MainActivity" />
+        <activity android:name="com.softsquared.oda.src.login.LoginActivity" />
+        <activity android:name="com.softsquared.oda.src.detail.DetailActivity"/>
+        <activity android:name="com.softsquared.oda.src.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.softsquared.oda.src.login.LoginActivity" />
-        <activity android:name="com.softsquared.oda.src.main.MainActivity"/>
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -1,33 +1,35 @@
 package com.softsquared.oda.src.main;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
+import com.softsquared.oda.src.detail.DetailActivity;
+import com.softsquared.oda.src.search.SearchActivity;
 import com.softsquared.odaproject.R;
 import com.softsquared.oda.src.BaseActivity;
 import com.softsquared.oda.src.main.interfaces.MainActivityView;
 
-import java.security.cert.Certificate;
 import java.util.ArrayList;
 
 import static com.softsquared.oda.src.main.MainRecyclerViewAdapter.TYPE_FOOTER;
-import static com.softsquared.oda.src.main.MainRecyclerViewAdapter.TYPE_HEADER;
 
-public class MainActivity extends BaseActivity implements MainActivityView {
+public class MainActivity extends BaseActivity implements MainActivityView, View.OnClickListener {
 
 
-    ArrayList<MainRecyclerViewItem> mMainRvitem =new ArrayList<>();
+    ArrayList<MainRecyclerViewItem> mMainRvitem = new ArrayList<>();
     HorizontalScrollView mHorizonScrollView;
     RecyclerView mRecyclerView;
     GridLayoutManager mGridLayoutManager;
+    MainRecyclerViewAdapter mMainRecyclerViewAdapterdapter;
+    Button mBtnAllCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,33 +37,43 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         setContentView(R.layout.activity_main);
 
         //findViewById
-        mRecyclerView = findViewById(R.id.rv_main_order_list) ;
+        mRecyclerView = findViewById(R.id.rv_main_order_list);
         mHorizonScrollView = findViewById(R.id.sv_main_image);
+        mBtnAllCheck = findViewById(R.id.btn_main_oda_all_check);
 
+        //listener
+
+        mBtnAllCheck.setOnClickListener(this);
         //dummy
-        for (int i=0;i<20;i++){
-            mMainRvitem.add(new MainRecyclerViewItem(false,"","오다타이틀",10000));
+        for (int i = 0; i < 20; i++) {
+            mMainRvitem.add(new MainRecyclerViewItem(false, "", "오다타이틀", 10000));
         }
 
         // 리사이클러뷰에 GridLayoutManager 객체 지정.
-        mGridLayoutManager = new GridLayoutManager(this,3);
-        mRecyclerView.setLayoutManager(mGridLayoutManager) ;
-        final MainRecyclerViewAdapter adapter = new MainRecyclerViewAdapter(mMainRvitem,this) ;
-
+        mGridLayoutManager = new GridLayoutManager(this, 3);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
+        mMainRecyclerViewAdapterdapter = new MainRecyclerViewAdapter(mMainRvitem, this);
         // 리사이클러뷰에 MainRecyclerViewAdapter 객체 지정.
-        mRecyclerView.setAdapter(adapter) ;
-
+        mRecyclerView.setAdapter(mMainRecyclerViewAdapterdapter);
         mGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                if (TYPE_HEADER == adapter.getItemViewType(position)) return 3;
-                else if(TYPE_FOOTER==adapter.getItemViewType(position)) return 3;
+                if (TYPE_FOOTER == mMainRecyclerViewAdapterdapter.getItemViewType(position))
+                    return 3;
                 else return 1;
             }
 
         });
+        mRecyclerView.addItemDecoration(new MovieItemDecoration(this));
 
+        mMainRecyclerViewAdapterdapter.setOnItemClickListener(new MainRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View v, int pos) {
+                //액티비티에서 리사이클러뷰의 아이템을 접근할 수 있다.
 
+                startActivity(new Intent(MainActivity.this, DetailActivity.class));
+            }
+        });
 
     }
 
@@ -83,13 +95,25 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
     }
 
-    public void customOnClick(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
-//            case R.id.main_btn_hello_world:
+            case R.id.iv_main_search:
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
 //                tryGetTest();
-//                break;
+                break;
+            case R.id.btn_main_oda_all_check:
+                mBtnAllCheck.setSelected(!mBtnAllCheck.isSelected());
+                if (mBtnAllCheck.isSelected()) {
+                    mBtnAllCheck.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_checkbox, 0, 0, 0);
+                    mMainRecyclerViewAdapterdapter.allCheck();
+                } else {
+                    mBtnAllCheck.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_checkbox_off, 0, 0, 0);
+                }
             default:
                 break;
         }
     }
+
+
 }

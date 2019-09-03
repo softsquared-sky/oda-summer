@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="30dp">
+
+    <TableLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0">
+
+        <TableRow>
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorDark"
+                android:text="상품필수정보"
+                android:textStyle="bold"
+                />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:text="포장 단위별 용량, 수량, 크기"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:text="30개입 (1560g)"
+                />
+        </TableRow>
+
+            <TextView
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/normalColor"/>
+
+
+
+        <TableRow
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:text="보관방법 또는 취급방법"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:text="0~10도 이하 냉장보관"
+                />
+        </TableRow>
+
+        <TextView
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/normalColor"/>
+        <TableRow
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:text="원산지"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:text="국내산"
+                />
+        </TableRow>
+
+        <TextView
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/normalColor"/>
+
+
+    </TableLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo_background" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:src="@drawable/logo_background" />
+
+
+
+</LinearLayout>

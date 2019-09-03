@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:numberpicker="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+<LinearLayout
+    android:orientation="vertical"
+android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/colorPrimary"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_detali_arrow_back"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_arrow_back"
+                    android:onClick="onClick"/>
+                <ImageView
+                    android:id="@+id/iv_detali_search"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/iv_detali_shopping_cart"
+                    android:onClick="onClick"
+                    android:src="@drawable/ic_search" />
+
+
+                <ImageView
+                    android:id="@+id/iv_detali_shopping_cart"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="15dp"
+                    android:onClick="onClick"
+                    android:src="@drawable/ic_shopping_cart" />
+
+                <TextView
+                    android:id="@+id/tv_detali_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="상품상세"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_detail_product_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:background="@color/colorWhite"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_test_detail_image" />
+    <TextView
+        android:id="@+id/tv_detail_product_title"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#4a4a4a"
+        android:text="[해발500포크]냉장삼겹살수육용/찌개용/목심수육용(500g)"
+        />
+    <LinearLayout
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/colorDark"
+            android:text="오다가"
+            />
+        <TextView
+            android:id="@+id/tv_detail_product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/colorPrimary"
+            android:text="14,500원"
+            />
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/detail_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:theme="@style/TabTheme"/>
+
+    <com.softsquared.oda.src.detail.MeasuredViewPager
+        android:id="@+id/detail_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/colorDark"
+            android:gravity="center_horizontal"
+            android:text="수량"
+        />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_detail_decrement"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn_rectangle_shape_gray"
+                android:text="—"
+                android:onClick="onClick"
+                android:textColor="@android:color/black" />
+
+
+
+            <TextView
+                android:id="@+id/tv_detail_product_count"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn_rectangle_shape_gray"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@android:color/black" />
+            <Button
+                android:id="@+id/btn_detail_increment"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn_rectangle_shape_gray"
+                android:text="+"
+                android:onClick="onClick"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_detail_add_shopping_cart"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:background="@drawable/login_button_selector"
+            android:text="장바구니 담기"
+            android:textColor="@color/login_text_selector"
+            android:onClick="onClick"
+            android:textSize="20sp" />
+        <Button
+            android:id="@+id/btn_detail_order"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:background="@drawable/login_button_selector"
+            android:text="주문요청하기"
+            android:textColor="@color/login_text_selector"
+            android:onClick="onClick"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>

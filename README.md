@@ -20,7 +20,7 @@ Search 페이지에 최근검색어는 프래그먼트에 리스트뷰를 추가
 
 Popular은 미구현
 
-8.29 - 22:26분 : 메인 화면 구축80%(리사이클러뷰 헤더 및 footer 추가하기) 바텀바 적용 OK
+8.29 - 22:26분 : 메인 화면 구축60%(리사이클러뷰 헤더 및 footer 추가하기) 바텀바 적용 OK
 코디네이터레이아웃 미적용, 리사이클러뷰 스크롤에 따라 visible 구현하기
 
 8.30 - SignUpActivity 기능 90%(중복확인API 미구현)
@@ -31,4 +31,18 @@ Popular은 미구현
  
 
 9.1 Main UI 80% StickyHeader,맨위로 스크롤,FAB 미구현
+-header와 footer 추가
+
+9.2 -detail productDetail UI 90% , Viewpager 동적 연동ok
+ViewPager 크기에 따라서 자동으로 맞춰주는 메소드
+https://wimir-dev.tistory.com/56 
+
+9-3 상품 후기 프래그먼트 내에 리스트뷰 구현시 스크롤뷰 내에 리스트뷰가 되어있어 스크롤이 먹히지 않는 현상
+
+viewpager내에 프래그먼트 내에 리스트뷰라 구조가 복잡하여 해결X(질문해야함)
+
+detail UI 100%(기능미구현및 서비스미구현) - 16:45
+
+
+
 

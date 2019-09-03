@@ -1,7 +1,6 @@
 package com.softsquared.oda.src.signUp;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,7 +11,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 
 import com.softsquared.oda.src.BaseActivity;
 import com.softsquared.oda.src.login.LoginActivity;
@@ -20,6 +18,7 @@ import com.softsquared.oda.src.signUp.interfaces.SignUpActivityView;
 import com.softsquared.odaproject.R;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.regex.Pattern;
 
@@ -27,10 +26,10 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
     private EditText mEtSignUpId, mEtSignUpPassword, mEtSignUpPasswordCheck, mEtSignUpBusinessNumber, mEtSignUpAddress, mEtSignUpExtraAddress;
     private RadioGroup mBtnRgFood1, mBtnRgFood2;
-    private Button mBtnSignUp,mBtnDupCheck;
-    private String mId, mPassword,mPasswordCheck, mAddress;
+    private Button mBtnSignUp, mBtnDupCheck;
+    private String mId, mPassword, mPasswordCheck, mAddress;
     private int mType;
-    private boolean mDupCheck=false;
+    private boolean mDupCheck = false;
 
     public SignUpActivity() {
         this.mId = "";
@@ -51,8 +50,8 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         mEtSignUpBusinessNumber = (EditText) findViewById(R.id.et_sign_up_business_number);
         mEtSignUpAddress = (EditText) findViewById(R.id.et_sign_up_address);
         mEtSignUpExtraAddress = (EditText) findViewById(R.id.et_sign_up_extra_address);
-        mBtnSignUp =(Button)findViewById(R.id.btn_request_sign_up);
-        mBtnDupCheck = (Button)findViewById(R.id.btn_duplicate_check);
+        mBtnSignUp = (Button) findViewById(R.id.btn_request_sign_up);
+        mBtnDupCheck = (Button) findViewById(R.id.btn_duplicate_check);
 
         mBtnRgFood1 = (RadioGroup) findViewById(R.id.rg_food_1);
         mBtnRgFood2 = (RadioGroup) findViewById(R.id.rg_food_2);
@@ -100,37 +99,37 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
                 mEtSignUpBusinessNumber.getText().length() > 0 &&
                 mEtSignUpAddress.getText().length() > 0 &&
                 mEtSignUpExtraAddress.getText().length() > 0 &&
-                mType!=0);
-        if(mBtnSignUp.isEnabled()){
+                mType != 0);
+        if (mBtnSignUp.isEnabled()) {
             mBtnSignUp.setBackgroundResource(R.drawable.login_button_selector);
             mBtnSignUp.setTextColor(getResources().getColor(R.color.login_text_selector));
-        }
-        else{
+        } else {
             mBtnSignUp.setTextColor(getResources().getColor(R.color.colorWhite));
-            mBtnSignUp.setBackgroundResource(R.color.nomalColor);
+            mBtnSignUp.setBackgroundResource(R.color.normalColor);
         }
     }
 
-    private void tryLoginAccess(String id,String pw,int type,String address) {
-        showProgressDialog();
+    private void tryLoginAccess(String id, String pw, int type, String address) {
 
         final SignUpService signUpService = new SignUpService(this);
         try {
-            signUpService.getSignUp(id,pw,type,address);
+            JSONObject params = new JSONObject();
+            params.put("id", id);
+            params.put("pw", pw);
+            params.put("type", type);
+            params.put("address", address);
+            showProgressDialog();
+            signUpService.postSignUp(params);
         } catch (JSONException e) {
-            e.printStackTrace();
+            showCustomToast("회원가입 실패");
         }
     }
 
-    private void tryDuplicateCheck(String id){
-        showProgressDialog();
+    private void tryDuplicateCheck(String id) {
 
         final SignUpService signUpService = new SignUpService(this);
-        try {
-            signUpService.getDuplicationCheck(id);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        showProgressDialog();
+        signUpService.getDuplicationCheck(id);
     }
 
 
@@ -154,19 +153,19 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
                 switch (rb.getId()) {
 
                     case R.id.btn_radio_food_1:
-                        mType =1;
+                        mType = 1;
                         break;
                     case R.id.btn_radio_food_2:
-                        mType =2;
+                        mType = 2;
                         break;
                     case R.id.btn_radio_food_3:
-                        mType=3;
+                        mType = 3;
                         break;
                     case R.id.btn_radio_food_4:
-                       mType=4;
+                        mType = 4;
                         break;
                     case R.id.btn_radio_food_5:
-                        mType=5;
+                        mType = 5;
                         break;
                 }
                 checkSignUpButtonState();
@@ -191,13 +190,13 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
                 RadioButton rb = (RadioButton) findViewById(realCheck);
                 switch (rb.getId()) {
                     case R.id.btn_radio_food_6:
-                        mType=6;
+                        mType = 6;
                         break;
                     case R.id.btn_radio_food_7:
-                        mType=7;
+                        mType = 7;
                         break;
                     case R.id.btn_radio_food_8:
-                        mType=8;
+                        mType = 8;
                         break;
                 }
                 checkSignUpButtonState();
@@ -207,34 +206,45 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
 
     @Override
-    public void validateSuccess(String text,int code) {
+    public void vaildateSignUpSuccess(String text, String id) {
         hideProgressDialog();
-
-        if(code==200){
-            finish();
-
-        }
-        else if (code ==100){
-            //중복된 아이디가 존재할때
-//            mDupCheck=false;
-
-        }
-        else if(code ==150){
-            // 중복된 아이디가 존재하지 않을때
-//            mDupCheck=true;
-        }
-        else{
-        }
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-
+        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+        intent.putExtra("newId", id);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        showCustomToast(text);
     }
 
     @Override
-    public void validateFailure(@Nullable String message) {
+    public void validateSignUpFailure(String message) {
         hideProgressDialog();
         showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
     }
 
+    @Override
+    public void validateDupSuccess(String text) {
+        hideProgressDialog();
+        showCustomToast(text);
+        mDupCheck = true;
+        mBtnDupCheck.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        mBtnDupCheck.setText("사용가능");
+        mBtnDupCheck.setTextColor(getResources().getColor(R.color.colorWhite));
+        mBtnDupCheck.setEnabled(false);
+    }
+
+    public void validateDupFailure(String message) {
+
+        hideProgressDialog();
+        showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
+
+    }
+
+    //response가 null 일때
+    public void validateFailure(String message) {
+        hideProgressDialog();
+        showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
+
+    }
 
 
     public void btn_join(View view) {
@@ -243,37 +253,31 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         mPassword = mEtSignUpPassword.getText().toString();
         mPasswordCheck = mEtSignUpPasswordCheck.getText().toString();
         mAddress = mEtSignUpAddress.getText().toString();
-        if(mDupCheck){
+        if (mDupCheck) {
 
             if (mPasswordCheck.equals(mPassword)) {
-                tryLoginAccess(mId,mPassword,mType,mAddress);
-            }
-            else
-            {
+                tryLoginAccess(mId, mPassword, mType, mAddress);
+            } else {
                 Toast.makeText(this, "동일한 암호를 임력하세요.", Toast.LENGTH_SHORT).show();
                 mEtSignUpPasswordCheck.setFocusable(true);
             }
 
-        }
-        else{
+        } else {
             Toast.makeText(this, "아이디 중복 확인이 필요합니다.", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void btn_duplicate_check(View view){
-        String regex = "^[a-z0-9]{4,10}$";
+    public void btn_duplicate_check(View view) {
+        String regex = "^[a-z]+[a-z0-9]{4,10}$";
         String id = mEtSignUpId.getText().toString();
 
-        if(Pattern.matches(regex,id)){
-            Toast.makeText(this, "중복확인 API OK", Toast.LENGTH_SHORT).show();
-            mDupCheck=true;
-        }else{
-            mDupCheck=false;
+        if (Pattern.matches(regex, id)) {
+            tryDuplicateCheck(id);
+        } else {
             Toast.makeText(this, "id는 4자 이상 10자 이하 영소문자/숫자 허용으로 만들어주세요", Toast.LENGTH_SHORT).show();
         }
 
     }
-
 
 
 }

@@ -5,291 +5,322 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.softsquared.oda.src.signUp.SignUpActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/colorPrimary"
-        >
-        <ImageView
-            android:id="@+id/iv_join_arrow_back"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_width="35dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_back"
-            android:adjustViewBounds="true"
-            />
 
-        <TextView
-            android:id="@+id/tv_sign_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textColor="@color/colorWhite"
-            android:gravity="center_vertical|center"
-            android:textStyle="bold"
-            android:text="회원가입"
-            android:textSize="25sp" />
-
-
-    </RelativeLayout>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@drawable/drop_shadow"/>
-        <TextView
-            android:layout_marginTop="10dp"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#9b9b9b"
-            android:lineSpacingExtra="6sp"
-
-            android:layout_gravity="center_horizontal|center"
-            android:gravity="center"
-            tools:text="오다에 오신 것을 환영합니다\n
-회원가입에 필요한 정보를 기입해주세요."
-            />
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
+        android:orientation="vertical">
 
-        <FrameLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp">
+            android:layout_height="80dp"
+            android:background="@color/colorPrimary">
 
-            <EditText
-
-                android:id="@+id/et_sign_up_id"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/iv_join_arrow_back"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
-                android:hint="아이디"
-                android:lineSpacingExtra="10sp"
-                android:singleLine="true"
-                android:textColor="#6fccd7"
-                android:textColorHint="#9b9b9b"
-                android:textSize="16sp"
-                android:theme="@style/EditTheme" />
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_arrow_back" />
 
-            <Button
-                android:id="@+id/btn_duplicate_check"
+
+            <TextView
+                android:id="@+id/tv_sign_up"
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_gravity="right|center"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/login_button_selector"
-                android:text="중복확인"
-                android:onClick="btn_duplicate_check"
-                android:textColor="@color/login_text_selector" />
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical|center"
+                android:text="회원가입"
+                android:textColor="@color/colorWhite"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-        </FrameLayout>
 
-        <EditText
-            android:id="@+id/et_sign_up_password"
-            android:layout_marginTop="5dp"
+        </RelativeLayout>
+
+        <ImageView
             android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/drop_shadow" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="비밀번호"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:lineSpacingExtra="6sp"
+
             android:textColor="#9b9b9b"
-            android:ems="10"
-            android:lineSpacingExtra="10sp"
-            android:textSize="16sp"
-            android:textColorHint="#9b9b9b"
-            android:singleLine="true"
-            android:inputType="textPassword"
-            android:theme="@style/EditTheme" />
-        <EditText
-            android:id="@+id/et_sign_up_password_check"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="비밀번호 확인"
-            android:textColor="#9b9b9b"
-            android:ems="10"
-            android:lineSpacingExtra="10sp"
-            android:textSize="16sp"
-            android:textColorHint="#9b9b9b"
-            android:singleLine="true"
-            android:inputType="textPassword"
-            android:theme="@style/EditTheme" />
-        <EditText
-            android:id="@+id/et_sign_up_business_number"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="사업자 번호 확인"
-            android:textColor="@color/colorGray"
-            android:lineSpacingExtra="10sp"
-            android:textSize="16sp"
-            android:textColorHint="#9b9b9b"
-            android:singleLine="true"
-            android:theme="@style/EditTheme" />
-        <EditText
-            android:id="@+id/et_sign_up_address"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorGray"
-            android:lineSpacingExtra="10sp"
-            android:textSize="16sp"
-            android:textColorHint="#9b9b9b"
-            android:singleLine="true"
-            android:theme="@style/EditTheme" />
-        <EditText
-            android:id="@+id/et_sign_up_extra_address"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorGray"
-            android:hint="상세 주소"
-            android:lineSpacingExtra="10sp"
-            android:textSize="16sp"
-            android:textColorHint="#9b9b9b"
-            android:singleLine="true"
-            android:theme="@style/EditTheme" />
+            android:textSize="14sp"
+            tools:text="오다에 오신 것을 환영합니다\n
+회원가입에 필요한 정보를 기입해주세요." />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
-            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_marginStart="3.5dp"
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/colorPrimary"
-                android:lineSpacingExtra="10sp"
-                tools:text="요식업 종류"
-                />
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp">
+
+                    <Button
+                        android:id="@+id/btn_duplicate_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="right|center"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/login_button_selector"
+                        android:onClick="btn_duplicate_check"
+                        android:text="중복확인"
+                        android:enabled="true"
+                        android:textColor="@color/login_text_selector" />
+
+                    <EditText
+
+                        android:id="@+id/et_sign_up_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="아이디"
+                        android:lineSpacingExtra="10sp"
+                        android:singleLine="true"
+                        android:textColor="#6fccd7"
+                        android:textColorHint="#9b9b9b"
+                        android:textSize="16sp"
+                        android:theme="@style/EditTheme" />
+
+                </FrameLayout>
+
+                <EditText
+                    android:id="@+id/et_sign_up_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:ems="10"
+                    android:hint="비밀번호"
+                    android:inputType="textPassword"
+                    android:lineSpacingExtra="10sp"
+                    android:singleLine="true"
+                    android:textColor="#9b9b9b"
+                    android:textColorHint="#9b9b9b"
+                    android:textSize="16sp"
+                    android:theme="@style/EditTheme" />
+
+                <EditText
+                    android:id="@+id/et_sign_up_password_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:ems="10"
+                    android:hint="비밀번호 확인"
+                    android:inputType="textPassword"
+                    android:lineSpacingExtra="10sp"
+                    android:singleLine="true"
+                    android:textColor="#9b9b9b"
+                    android:textColorHint="#9b9b9b"
+                    android:textSize="16sp"
+                    android:theme="@style/EditTheme" />
+
+                <EditText
+                    android:id="@+id/et_sign_up_business_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="사업자 번호 확인"
+                    android:lineSpacingExtra="10sp"
+                    android:singleLine="true"
+                    android:textColor="@color/colorGray"
+                    android:textColorHint="#9b9b9b"
+                    android:textSize="16sp"
+                    android:theme="@style/EditTheme" />
+
+                <EditText
+                    android:id="@+id/et_sign_up_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="10sp"
+                    android:singleLine="true"
+                    android:textColor="@color/colorGray"
+                    android:hint="주소"
+                    android:textColorHint="#9b9b9b"
+                    android:textSize="16sp"
+                    android:theme="@style/EditTheme" />
+
+                <EditText
+                    android:id="@+id/et_sign_up_extra_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="상세 주소"
+                    android:lineSpacingExtra="10sp"
+                    android:singleLine="true"
+                    android:textColor="@color/colorGray"
+                    android:textColorHint="#9b9b9b"
+                    android:textSize="16sp"
+                    android:theme="@style/EditTheme" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3.5dp"
+                        android:lineSpacingExtra="10sp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        tools:text="요식업 종류" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/rg_food_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="15dp">
+
+                    <RadioButton
+                        android:id="@+id/btn_radio_food_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_radio_button"
+                        android:padding="5dp"
+                        android:text="일식"
+                        android:textSize="16sp"></RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/btn_radio_food_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_radio_button"
+                        android:padding="5dp"
+                        android:text="한식"
+                        android:textSize="16sp"></RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/btn_radio_food_3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_radio_button"
+                        android:padding="5dp"
+                        android:text="양식"
+                        android:textSize="16sp"></RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/btn_radio_food_4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_radio_button"
+                        android:padding="5dp"
+                        android:text="중식"
+                        android:textSize="16sp"></RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/btn_radio_food_5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_radio_button"
+                        android:padding="5dp"
+                        android:text="분식"
+                        android:textSize="16sp"></RadioButton>
+
+                </RadioGroup>
+
+                <RadioGroup
+                    android:id="@+id/rg_food_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp">
+
+                    <RadioButton
+                        android:id="@+id/btn_radio_food_6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_radio_button"
+                        android:padding="5dp"
+                        android:text="베이커리/카페"
+                        android:textSize="16sp"></RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/btn_radio_food_7"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_radio_button"
+                        android:padding="5dp"
+                        android:text="패스트푸드"
+                        android:textSize="16sp"></RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/btn_radio_food_8"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_radio_button"
+                        android:padding="5dp"
+                        android:text="기타"
+                        android:textSize="16sp"></RadioButton>
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_request_sign_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/normalColor"
+                    android:enabled="true"
+                    android:onClick="btn_join"
+                    android:text="가입하기"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </LinearLayout>
 
-        <RadioGroup
-            android:paddingTop="15dp"
-            android:id="@+id/rg_food_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-            <RadioButton
-                android:id="@+id/btn_radio_food_1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@drawable/custom_radio_button"
-                android:padding="5dp"
-                android:text="일식"
-                android:textSize="16sp"></RadioButton>
-
-            <RadioButton
-                android:id="@+id/btn_radio_food_2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@drawable/custom_radio_button"
-                android:padding="5dp"
-                android:text="한식"
-                android:textSize="16sp"></RadioButton>
-
-            <RadioButton
-                android:id="@+id/btn_radio_food_3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@drawable/custom_radio_button"
-                android:padding="5dp"
-                android:text="양식"
-                android:textSize="16sp"></RadioButton>
-
-            <RadioButton
-                android:id="@+id/btn_radio_food_4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@drawable/custom_radio_button"
-                android:padding="5dp"
-                android:text="중식"
-                android:textSize="16sp"></RadioButton>
-
-            <RadioButton
-                android:id="@+id/btn_radio_food_5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@drawable/custom_radio_button"
-                android:padding="5dp"
-                android:text="분식"
-                android:textSize="16sp"></RadioButton>
-
-        </RadioGroup>
-        <RadioGroup
-            android:id="@+id/rg_food_2"
-            android:paddingTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioButton
-                android:id="@+id/btn_radio_food_6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@drawable/custom_radio_button"
-                android:padding="5dp"
-                android:text="베이커리/카페"
-                android:textSize="16sp"></RadioButton>
-
-            <RadioButton
-                android:id="@+id/btn_radio_food_7"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@drawable/custom_radio_button"
-                android:padding="5dp"
-                android:text="패스트푸드"
-                android:textSize="16sp"></RadioButton>
-
-            <RadioButton
-                android:id="@+id/btn_radio_food_8"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@drawable/custom_radio_button"
-                android:padding="5dp"
-                android:text="기타"
-                android:textSize="16sp"></RadioButton>
-        </RadioGroup>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/btn_request_sign_up"
-            android:layout_gravity="bottom"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:textColor="@color/colorWhite"
-            android:background="@color/nomalColor"
-            android:text="가입하기"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:onClick="btn_join"
-            android:enabled="true"/>
-    </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

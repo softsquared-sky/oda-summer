@@ -5,7 +5,7 @@
     <color name="colorGray">#9b9b9b</color>
     <color name="colorAccent">#D81B60</color>
     <color name="cursorColor">#6fccd7</color>
-    <color name="nomalColor">#1e000000</color>
+    <color name="normalColor">#1e000000</color>
     <color name="colorDark">#000000</color>
     <color name="colorWhite">#ffffff</color>
 

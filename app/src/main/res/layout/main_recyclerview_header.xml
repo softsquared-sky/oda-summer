@@ -1,46 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#4a4a4a"
-        android:text="바로 주문하기 선택상품 "
-        />
-    <TextView
-        android:id="@+id/tv_main_oda_item_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#4a4a4a"
-        android:textStyle="bold"
-        android:text="0"
-        />
-    <TextView
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#4a4a4a"
-        android:text="개"
-        />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/cb_main_oda_all_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="전체선택"
-        android:textSize="16sp"
-        android:lineSpacingExtra="10sp"
-        android:background="@android:color/transparent"
-        android:layout_marginStart="5dp"
-        android:drawablePadding="10dp"
-        android:drawableStart="@drawable/ic_checkbox_off"
-        android:textColor="#9b9b9b"
-        android:buttonTint="@color/cursorColor"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#4a4a4a"
+            android:text="바로 주문하기 선택상품 "
+            />
+        <TextView
+            android:id="@+id/tv_main_oda_item_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#4a4a4a"
+            android:textStyle="bold"
+            android:text="0"
+            />
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#4a4a4a"
+            android:text="개"
+            />
 
-        />
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_main_oda_all_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전체선택"
+            android:textSize="16sp"
+            android:lineSpacingExtra="10sp"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="5dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_checkbox_off"
+            android:textColor="#9b9b9b"
+            android:buttonTint="@color/cursorColor"
+
+            />
+    </LinearLayout>
+
+</FrameLayout>

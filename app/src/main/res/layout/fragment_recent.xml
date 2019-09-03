@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FragmentA">
+    >
 
     <!-- TODO: Update blank fragment layout -->
 
 
     <ListView
-        android:id="@+id/lv_recent_list"
+        android:id="@+id/lv_search_recent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stackFromBottom="true"/>
