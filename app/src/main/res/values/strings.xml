@@ -9,4 +9,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_settings">Settings</string>
     <string name="PDI">상품필수정보</string>
+    <string name="detail_error">상세정보를 불러올 수 없습니다.</string>
+    <string name="패스트푸드">패스트푸드</string>
+    <string name="db_error">DB에 오류가 발생하였습니다.</string>
+    <string name="plus">+</string>
+    <string name="_1">1</string>
+    <string name="unload_review">리뷰를 불러올 수 없습니다.</string>
+    <string name="count">수량</string>
+    <string name="minus">—</string>
 </resources>

@@ -1,8 +1,9 @@
-package com.softsquared.oda.src.main.models;
+package com.softsquared.oda.src.splash.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DefaultResponse {
+public class SplashResponse {
+
     @SerializedName("code")
     private int code;
 
@@ -11,6 +12,7 @@ public class DefaultResponse {
 
     @SerializedName("isSuccess")
     private boolean isSuccess;
+
 
     public int getCode() {
         return code;

@@ -4,7 +4,7 @@ package com.softsquared.oda.src.main;
 
 import com.softsquared.oda.src.main.interfaces.MainActivityView;
 import com.softsquared.oda.src.main.interfaces.MainRetrofitInterface;
-import com.softsquared.oda.src.main.models.DefaultResponse;
+import com.softsquared.oda.src.main.models.MainResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,22 +20,31 @@ class MainService {
         this.mMainActivityView = mainActivityView;
     }
 
-    void getTest() {
+    void getProductInfo(int productId) {
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
-        mainRetrofitInterface.getTest().enqueue(new Callback<DefaultResponse>() {
+        mainRetrofitInterface.getBasicProductInfo(productId).enqueue(new Callback<MainResponse>() {
             @Override
-            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
-                final DefaultResponse defaultResponse = response.body();
-                if (defaultResponse == null) {
-                    mMainActivityView.validateFailure(null);
+            public void onResponse(Call<MainResponse> call, Response<MainResponse> response) {
+                if (response == null) {
+                    mMainActivityView.validateFailure("제품의 상세정보가 없습니다.");
                     return;
                 }
+                final MainResponse mainResponse = response.body();
 
-                mMainActivityView.validateSuccess(defaultResponse.getMessage());
+                if (mainResponse == null) {
+                    mMainActivityView.validateFailure(null);
+
+                } else if (mainResponse.getCode() == 400) {
+                    //중복된 ID가 없을시 반환 코드
+                    mMainActivityView.validateSuccess(mainResponse.getMainRecyclerViewItems());
+                }
+                else {
+                    mMainActivityView.validateFailure(null);
+                }
             }
 
             @Override
-            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+            public void onFailure(Call<MainResponse> call, Throwable t) {
                 mMainActivityView.validateFailure(null);
             }
         });

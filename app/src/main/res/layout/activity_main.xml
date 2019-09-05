@@ -19,15 +19,16 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="56dp"
                 android:background="@color/colorPrimary"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/iv_main_search"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_marginRight="28dp"
                     android:layout_toLeftOf="@+id/iv_main_shopping_cart"
                     android:onClick="onClick"
                     android:src="@drawable/ic_search" />
@@ -35,11 +36,11 @@
 
                 <ImageView
                     android:id="@+id/iv_main_shopping_cart"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_margin="15dp"
+                    android:layout_marginEnd="22dp"
                     android:onClick="onClick"
                     android:src="@drawable/ic_shopping_cart" />
 
@@ -50,7 +51,7 @@
                     android:layout_centerInParent="true"
                     android:text="오다"
                     android:textColor="@color/colorWhite"
-                    android:textSize="25sp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
             </RelativeLayout>
@@ -71,18 +72,18 @@
                 android:layout_width="410dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:src="@drawable/main_image1" />
+                android:src="@drawable/tmp_main_slide_img" />
 
             <ImageView
                 android:layout_width="410dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:src="@drawable/main_image1" />
+                android:src="@drawable/tmp_main_slide_img2" />
             <ImageView
             android:layout_width="410dp"
             android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:src="@drawable/main_image1" />
+                android:src="@drawable/tmp_main_slide_img3" />
 
 
 
@@ -103,7 +104,9 @@
                 android:id="@+id/rv_main_order_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="56dp"
+                android:paddingStart="16dp"
+                android:paddingRight="20dp"
 
                 android:scrollbars="vertical" />
 
@@ -134,12 +137,12 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_custom_main_bottom_tip_gray"
                     />
+
                 <ImageView
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_custom_main_bottom_mypage_gray"
-                    />
+                    android:src="@drawable/ic_custom_main_bottom_mypage_gray" />
 
 
             </LinearLayout>

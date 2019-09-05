@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.softsquared.odaproject.R;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class RecentListViewAdapter extends BaseAdapter {
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList

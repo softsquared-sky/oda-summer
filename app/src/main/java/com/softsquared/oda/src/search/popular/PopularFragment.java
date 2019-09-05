@@ -13,10 +13,10 @@ import com.softsquared.odaproject.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentB extends Fragment {
+public class PopularFragment extends Fragment {
 
 
-    public FragmentB() {
+    public PopularFragment() {
         // Required empty public constructor
     }
 

@@ -13,16 +13,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="56dp"
             android:orientation="horizontal"
             android:background="@color/colorPrimary">
 
             <ImageView
                 android:id="@+id/iv_search_arrow_back"
-                android:layout_margin="15dp"
+                android:layout_marginStart="18dp"
                 android:layout_gravity="center_vertical"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:onClick="searchOnClick"
                 android:src="@drawable/ic_arrow_back"/>
 
@@ -30,20 +30,23 @@
                 android:id="@+id/et_search_keyword"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="18dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:background="@drawable/btn_rectangle_shape_white"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="10dp"
+                android:paddingStart="15dp"
                 android:drawableTint="@color/colorGray"
                 android:hint="검색어를 입력하세요"
                 android:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/iv_search_shopping_cart"
-                android:layout_margin="15dp"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_marginEnd="22dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:onClick="searchOnClick"
                 android:src="@drawable/ic_shopping_cart"/>

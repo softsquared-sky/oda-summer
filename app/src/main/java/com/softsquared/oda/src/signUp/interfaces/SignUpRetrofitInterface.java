@@ -16,16 +16,16 @@ public interface SignUpRetrofitInterface {
     //    @GET("/test")
 
 //    @GET("/jwt")
-//    Call<DefaultResponse> getTest();
+//    Call<MainResponse> getTest();
 //
 //    @GET("/test/{number}")
-//    Call<DefaultResponse> getTestPathAndQuery(
+//    Call<MainResponse> getTestPathAndQuery(
 //            @Path("number") int number,
 //            @Query("content") final String content
 //    );
 //
 //    @POST("/test")
-//    Call<DefaultResponse> postTest(@Body RequestBody params);
+//    Call<MainResponse> postTest(@Body RequestBody params);
 
     @GET("/id")
     Call<SignUpResponse> idDupCheck(

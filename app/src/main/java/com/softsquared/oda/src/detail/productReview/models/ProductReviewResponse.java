@@ -5,10 +5,11 @@ import com.softsquared.odaproject.R;
 
 import java.util.ArrayList;
 
-public class ReviewResponse {
+public class ProductReviewResponse {
     @SerializedName("result")
     ArrayList<Result> result;
 
+    //ArrayList<ProductReviewItem>
     public ArrayList<Result> getResults() {
         return result;
     }
@@ -25,6 +26,7 @@ public class ReviewResponse {
         private String reviewImage;
 
     }
+    //이부분 ProductReviewItem으로 바꾸고
 
 
     @SerializedName("code")

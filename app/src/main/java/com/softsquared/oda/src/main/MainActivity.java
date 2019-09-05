@@ -1,7 +1,6 @@
 package com.softsquared.oda.src.main;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,10 +12,12 @@ import android.widget.HorizontalScrollView;
 
 import com.softsquared.oda.src.detail.DetailActivity;
 import com.softsquared.oda.src.search.SearchActivity;
+import com.softsquared.oda.src.shoppingCart.ShoppingCartActivity;
 import com.softsquared.odaproject.R;
 import com.softsquared.oda.src.BaseActivity;
 import com.softsquared.oda.src.main.interfaces.MainActivityView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import static com.softsquared.oda.src.main.MainRecyclerViewAdapter.TYPE_FOOTER;
@@ -39,15 +40,12 @@ public class MainActivity extends BaseActivity implements MainActivityView, View
         //findViewById
         mRecyclerView = findViewById(R.id.rv_main_order_list);
         mHorizonScrollView = findViewById(R.id.sv_main_image);
-        mBtnAllCheck = findViewById(R.id.btn_main_oda_all_check);
+        mBtnAllCheck = findViewById(R.id.btn_main_select_all_item);
 
         //listener
 
         mBtnAllCheck.setOnClickListener(this);
-        //dummy
-        for (int i = 0; i < 20; i++) {
-            mMainRvitem.add(new MainRecyclerViewItem(false, "", "오다타이틀", 10000));
-        }
+
 
         // 리사이클러뷰에 GridLayoutManager 객체 지정.
         mGridLayoutManager = new GridLayoutManager(this, 3);
@@ -64,29 +62,37 @@ public class MainActivity extends BaseActivity implements MainActivityView, View
             }
 
         });
+
         mRecyclerView.addItemDecoration(new MovieItemDecoration(this));
 
         mMainRecyclerViewAdapterdapter.setOnItemClickListener(new MainRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(View v, int pos) {
                 //액티비티에서 리사이클러뷰의 아이템을 접근할 수 있다.
-
-                startActivity(new Intent(MainActivity.this, DetailActivity.class));
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("productId",pos+1);
+                intent.putExtra("productImage",(mMainRvitem.get(pos).getImageResults()).get(0).getImageUrl());
+                intent.putExtra("productTitle",mMainRvitem.get(pos).getOdaTitle());
+                intent.putExtra("productPrice",mMainRvitem.get(pos).getOdaPrice());
+                startActivity(intent);
             }
         });
-
+        getMainProduct();
     }
 
-    private void tryGetTest() {
+    private void getMainProduct() {
         showProgressDialog();
 
         final MainService mainService = new MainService(this);
-        mainService.getTest();
+        for(int i=1;i<=21;i++)
+        mainService.getProductInfo(i);
     }
 
     @Override
-    public void validateSuccess(String text) {
+    public void validateSuccess(MainRecyclerViewItem items) {
         hideProgressDialog();
+        mMainRvitem.add(items);
+        mMainRecyclerViewAdapterdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -98,11 +104,14 @@ public class MainActivity extends BaseActivity implements MainActivityView, View
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.iv_main_shopping_cart:
+                startActivity(new Intent(MainActivity.this, ShoppingCartActivity.class));
+                break;
             case R.id.iv_main_search:
                 startActivity(new Intent(MainActivity.this, SearchActivity.class));
 //                tryGetTest();
                 break;
-            case R.id.btn_main_oda_all_check:
+            case R.id.btn_main_select_all_item:
                 mBtnAllCheck.setSelected(!mBtnAllCheck.isSelected());
                 if (mBtnAllCheck.isSelected()) {
                     mBtnAllCheck.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_checkbox, 0, 0, 0);

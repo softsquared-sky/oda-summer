@@ -9,15 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MovieItemDecoration extends RecyclerView.ItemDecoration{
+public class MovieItemDecoration extends RecyclerView.ItemDecoration {
 
-    private int size10;
-    private int size5;
+    private int size16;
+    private int size1;
 
     public MovieItemDecoration(Context context) {
 
-        size10 = dpToPx(context, 10);
-        size5 = dpToPx(context, 5);
+        size16 = dpToPx(context, 16);
+        size1 = dpToPx(context, 1);
     }
 
     // dp -> pixel 단위로 변경
@@ -37,32 +37,32 @@ public class MovieItemDecoration extends RecyclerView.ItemDecoration{
         int itemCount = state.getItemCount();
 
         //상하 설정
-        if(position == 0 || position == 1||position==2) {
+        if (position == 0 || position == 1 || position == 2) {
             // 첫번 째 줄 아이템
-            outRect.top = size10;
-            outRect.bottom = size10;
+            outRect.top = size16;
+            outRect.bottom = size16;
         } else {
-            outRect.bottom = size10;
+            outRect.bottom = size16;
         }
 
         // spanIndex = 0 -> 왼쪽
         // spanIndex = 1 -> 오른쪽
         GridLayoutManager.LayoutParams lp = (GridLayoutManager.LayoutParams) view.getLayoutParams();
+        GridLayoutManager gridLayoutManager = (GridLayoutManager) parent.getLayoutManager();
+        int spanSize = lp.getSpanSize();
         int spanIndex = lp.getSpanIndex();
-
-        if(spanIndex == 0) {
-            //왼쪽 아이템
-            outRect.left = size10;
-            outRect.right = size5;
-
-        } else if(spanIndex == 1) {
-            //오른쪽 아이템
-            outRect.left = size5;
-            outRect.right = size5;
+        int totalSpanSize = 0;
+        if (gridLayoutManager != null) {
+            totalSpanSize = gridLayoutManager.getSpanCount();
         }
-        else{
-            outRect.right = size10;
+        if (spanIndex == 0) {//left
+        } else if (spanSize + spanIndex == totalSpanSize) {//right
+        } else if ((spanIndex > 0) && ((spanSize + spanIndex) < totalSpanSize)) {//가운데
+            outRect.left = size1;
+            outRect.right = size1 ;
+
         }
+
 
     }
 

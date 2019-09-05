@@ -12,8 +12,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
             android:textSize="16sp"
-            android:textColor="#4a4a4a"
+            android:textColor="@color/colorNormalGray"
             android:text="바로 주문하기 선택상품 "
             />
         <TextView
@@ -21,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textColor="#4a4a4a"
+            android:textColor="@color/colorNormalGray"
             android:textStyle="bold"
             android:text="0"
             />
@@ -30,22 +31,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textColor="#4a4a4a"
+            android:textColor="@color/colorNormalGray"
             android:text="개"
             />
 
         <Button
-            android:id="@+id/btn_main_oda_all_check"
+            android:id="@+id/btn_main_select_all_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="전체선택"
+            android:layout_marginEnd="17dp"
             android:textSize="16sp"
             android:lineSpacingExtra="10sp"
             android:background="@android:color/transparent"
             android:layout_marginStart="5dp"
             android:drawablePadding="10dp"
             android:drawableStart="@drawable/ic_checkbox_off"
-            android:textColor="#9b9b9b"
+            android:textColor="@color/colorGray"
             android:buttonTint="@color/cursorColor"
 
             />

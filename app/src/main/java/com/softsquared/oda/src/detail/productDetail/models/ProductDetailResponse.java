@@ -9,67 +9,66 @@ import java.util.List;
 public class ProductDetailResponse {
 
     @SerializedName("result")
-    Result result;
+    DetailResult result;
 
-    public Result getResult() {
+    public DetailResult getResult() {
         return result;
     }
 
-    public class Result{
+    public class DetailResult{
 
-        public ArrayList<ImageResult> getImageResults() {
-            return imageResults;
-        }
+        @SerializedName("origin")
+        private String origin;
 
-        public ArrayList<DetailContent> getDetailContents() {
-            return detailContents;
-        }
+        @SerializedName("qpp")
+        private String qpp;
+
+        @SerializedName("storeMethod")
+        private String storeMethod;
+
+
 
         @SerializedName("imageResult")
-        public ArrayList<ImageResult> imageResults;
+        private ArrayList<DetailImageResult> detailImageResults;
 
-        @SerializedName("detailContent")
-        public ArrayList<DetailContent> detailContents;
 
-        public class ImageResult {
+        public ArrayList<DetailImageResult> getDetailImageResults() {
+            return detailImageResults;
+        }
+
+        public class DetailImageResult {
 
             @SerializedName("imageUrl")
             private String imageUrl;
 
             @SerializedName("turn")
             private int turn;
-        }
 
-
-        public class DetailContent{
-
-            @SerializedName("origin")
-            private String origin;
-
-            @SerializedName("qpp")
-            private String qpp;
-
-            @SerializedName("storeMethod")
-            private String storeMethod;
-
-            public String getOrigin() {
-                return origin;
+            public String getImageUrl() {
+                return imageUrl;
             }
 
-            public String getQpp() {
-                return qpp;
-            }
-
-            public String getStoreMethod() {
-                return storeMethod;
+            public int getTurn() {
+                return turn;
             }
         }
 
 
-        @SerializedName("imageTurn")
-        private String jwt;
-        @SerializedName("image")
-        public String getJwt() { return jwt; }
+        public String getOrigin() {
+            return origin;
+        }
+
+        public String getQpp() {
+            return qpp;
+        }
+
+        public String getStoreMethod() {
+            return storeMethod;
+        }
+
+
+
+
     }
 
 

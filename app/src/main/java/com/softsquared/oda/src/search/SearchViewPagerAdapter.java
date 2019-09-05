@@ -6,16 +6,16 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.softsquared.oda.src.search.recent.RecentListFragment;
-import com.softsquared.oda.src.search.popular.FragmentB;
+import com.softsquared.oda.src.search.popular.PopularFragment;
 
 public class SearchViewPagerAdapter extends FragmentPagerAdapter {
     RecentListFragment recentListFragment;
-    FragmentB fragmentB;
+    PopularFragment popularFragment;
 
     SearchViewPagerAdapter(FragmentManager fr) {
         super(fr);
         recentListFragment = new RecentListFragment();
-        fragmentB = new FragmentB();
+        popularFragment = new PopularFragment();
     } //꼭 있어야함
 
 
@@ -25,7 +25,7 @@ public class SearchViewPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return recentListFragment;
             case 1:
-                return fragmentB;
+                return popularFragment;
         }
         return null;
     }

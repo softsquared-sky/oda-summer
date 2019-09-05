@@ -2,6 +2,7 @@ package com.softsquared.oda.src.detail.productReview;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -9,23 +10,26 @@ import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 
+import com.softsquared.oda.src.BaseActivity;
 import com.softsquared.oda.src.detail.DetailActivity;
+import com.softsquared.oda.src.detail.productReview.interfaces.ProductReviewFragmentView;
 import com.softsquared.odaproject.R;
 
 import java.util.ArrayList;
 
-public class FragmentProductReview extends Fragment {
+public class ProductReviewFragment extends Fragment implements ProductReviewFragmentView {
 
     private ArrayList<ProductReviewItem> mProductReviewItemList = new ArrayList<>();
     private ProductReviewAdapter mLvProductReviewAdapter;
     private ListView mLvProductReview;
     private Button mBtnReviewEnrollment;
-    //    private SharedPreferences mSharedPref;
+    private int mProductId;
 
-    public FragmentProductReview() {
+    public ProductReviewFragment(int productId) {
 
-        for(int i=0;i<5;i++) {
-            mProductReviewItemList.add( new ProductReviewItem(null, i + "번째 리뷰 제목입니다~", "2019-09-03", "jhw**** 님",
+        mProductId=productId;
+        for(int i=0;i<10;i++) {
+            mProductReviewItemList.add( new ProductReviewItem(null, i + "번째 리뷰 제목", "2019-09-04", "jhw**** 님",
                     "dummy dummy 너무 yummy yummy 하네요 좋습니다"));
         }
     }
@@ -45,6 +49,14 @@ public class FragmentProductReview extends Fragment {
         mLvProductReviewAdapter = new ProductReviewAdapter(mProductReviewItemList,getActivity());
         mLvProductReview.setAdapter(mLvProductReviewAdapter);
 
+//        mLvProductReview.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                mLvProductReview.requestDisallowInterceptTouchEvent(true);
+//                return false;
+//            }
+//        });
+
         ((DetailActivity) getActivity()).refresh();
 
         mBtnReviewEnrollment.setOnClickListener(new View.OnClickListener() {
@@ -56,5 +68,28 @@ public class FragmentProductReview extends Fragment {
         return view;
     }
 
+    private void getProductReview() {
+        ( (BaseActivity)getActivity()).showProgressDialog();
 
+        final ProductReviewService productReviewService = new ProductReviewService(this);
+        productReviewService.getProductReview(mProductId);
+    }
+
+
+    @Override
+    public void validateSuccess(String text) {
+
+        //값을 받아온다음에 add해주면 끝!
+        ( (BaseActivity)getActivity()).hideProgressDialog();
+
+//        mProductReviewItemList.add(items);
+//        mLvProductReviewAdapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void validateFailure(String message) {
+        ( (BaseActivity)getActivity()).hideProgressDialog();
+        ( (BaseActivity)getActivity()).showCustomToast("리뷰를 불러올 수 없습니다.");
+    }
 }

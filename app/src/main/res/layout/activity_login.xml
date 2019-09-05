@@ -55,10 +55,11 @@
                         android:hint="아이디"
                         android:inputType="text"
                         android:lineSpacingExtra="10sp"
+                        android:paddingBottom="20dp"
                         android:nextFocusDown="@id/et_login_password"
                         android:singleLine="true"
-                        android:textColor="#6fccd7"
-                        android:textColorHint="#9b9b9b"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/colorGray"
                         android:textSize="16sp"
                         android:theme="@style/EditTheme" />
 
@@ -69,11 +70,12 @@
                         android:layout_marginTop="20dp"
                         android:ems="10"
                         android:hint="비밀번호"
+                        android:paddingBottom="20dp"
                         android:inputType="textPassword"
                         android:lineSpacingExtra="10sp"
                         android:singleLine="true"
-                        android:textColor="#9b9b9b"
-                        android:textColorHint="#9b9b9b"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/colorGray"
                         android:textSize="16sp"
                         android:theme="@style/EditTheme" />
                 </LinearLayout>
@@ -95,7 +97,7 @@
                         android:drawablePadding="10dp"
                         android:lineSpacingExtra="10sp"
                         android:text="자동로그인"
-                        android:textColor="#9b9b9b"
+                        android:textColor="@color/colorGray"
                         android:textSize="16sp"
 
                         />
@@ -106,7 +108,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:textColor="#9b9b9b"
+                android:textColor="@color/colorGray"
                 android:lineSpacingExtra="10sp"
                 android:layout_weight="1"
                 android:text="자동로그인"
@@ -120,7 +122,7 @@
                         android:gravity="right"
                         android:lineSpacingExtra="10sp"
                         android:text="비밀번호 찾기"
-                        android:textColor="#9b9b9b"
+                        android:textColor="@color/colorGray"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -143,6 +145,7 @@
                         android:background="@drawable/login_button_selector"
                         android:text="로그인"
                         android:textColor="@color/login_text_selector"
+                        android:stateListAnimator="@null"
                         android:textSize="20sp" />
 
                     <Button

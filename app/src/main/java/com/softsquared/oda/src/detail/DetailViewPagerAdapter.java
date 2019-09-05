@@ -5,36 +5,30 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.softsquared.oda.src.detail.productDetail.FragmentProductDetail;
-import com.softsquared.oda.src.detail.productReview.FragmentProductReview;
+import com.softsquared.oda.src.detail.productDetail.ProductDetailFragment;
+import com.softsquared.oda.src.detail.productReview.ProductReviewFragment;
+
+import java.util.ArrayList;
 
 public class DetailViewPagerAdapter extends FragmentPagerAdapter {
-    FragmentProductDetail mFmtProductdetail;
-    FragmentProductReview mFmtProductReview;
 
-    DetailViewPagerAdapter(FragmentManager fr) {
+    private ArrayList<Fragment> fragments;
+
+    DetailViewPagerAdapter(FragmentManager fr,int productId,String productImage,String productTitle,int productPrice) {
         super(fr);
-        mFmtProductdetail = new FragmentProductDetail();
-        mFmtProductReview = new FragmentProductReview();
+        this.fragments = new ArrayList<>();
+        fragments.add(new ProductDetailFragment(productId,productImage,productTitle,productPrice));
+        fragments.add(new ProductReviewFragment(productId));
     } //꼭 있어야함
-
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return mFmtProductdetail;
-            case 1:
-                return mFmtProductReview;
-        }
-        return null;
+        return fragments.get(position);
     }
-
-    private static int PAGE_NUMBER = 2; //생성할 프래그먼트
 
     @Override
     public int getCount() {
-        return PAGE_NUMBER;
+        return fragments.size();
     }
 
     //탭 레이아웃의 제목을 지정해준다
@@ -50,4 +44,7 @@ public class DetailViewPagerAdapter extends FragmentPagerAdapter {
                 return null;
         }
     }
+
+
+
 }

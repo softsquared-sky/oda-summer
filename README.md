@@ -43,6 +43,53 @@ viewpager내에 프래그먼트 내에 리스트뷰라 구조가 복잡하여 �
 
 detail UI 100%(기능미구현및 서비스미구현) - 16:45
 
+미완성 기능
+Main
+-Main에서 전체선택시 전체선택하는 메소드 어댑터 내에 allCheck 미구현*
+-아이템 체크시 갯수 증가
+-아이템 클릭시 API 요청 후 detail로 넘어가기 
+
+Search
+ recent 
+  -최근검색시 중복 제거 및 위로 올라오는 로직 미구현
+  -detail 액티비티 및 API 미연동
+
+
+Detail-Review 에서 스크롤뷰 안에 리스트뷰
+
+ mLvProductReview.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                mLvProductReview.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+
+
+를 통해 해결, 하지만 UI적으론 미흡
+
+
+9.4 
+Splash jwt 토큰으로 서버통신
+
+9.5
 
 
 
+로그인 액티비티 OK
+회원가입 액티비티 OK 
+스플래쉬 OK
+Main UI OK - 전체선택및 바로주문,체크박스와텍스트연동X
+detail UI 90% - 리뷰부분 서비스 미연결 (서버 데이터 부족 및 API 변수 다름)
+Response에 있는 것을 Item으로 옮겨서 작업해야함
+
+장바구니 UI 100%(custom footer 미구현)
+ -전체선택활성화 및 색상변경미적용(상품이있을때보여주고 없을땐 회색처리미구현)
+	즉 초기상태 미구현
+
+	전체선택 체크박스연동 X (메인과 동일함)
+	체크박스누를시 주문요청하기 버튼 enable및색상변경
+	체크박스 누를시 아이템 price 합계를 오다가에 더해주는 로직 미구현
+
+
+전체적인 icon 크기 조절 

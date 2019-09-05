@@ -1,19 +1,54 @@
 package com.softsquared.oda.src.main;
 
-import android.widget.CheckBox;
-import android.widget.ImageView;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainRecyclerViewItem {
-    private boolean selected;
-    private String mainImage;
+
+    @SerializedName("imageResult")
+    private ArrayList<ImageResult> imageResults;
+    public class ImageResult {
+
+        @SerializedName("imageUrl")
+        private String imageUrl;
+
+        public String getImageUrl() {
+            return imageUrl;
+        }
+    }
+
+    @SerializedName("pNum")
+    private int productId;
+
+    @SerializedName("pName")
     private String odaTitle;
+
+    @SerializedName("odaPrice")
     private int odaPrice;
 
-    public MainRecyclerViewItem(boolean selected, String mainImage, String odaTitle, int odaPrice) {
+
+    public int getProductId() {
+        return productId;
+    }
+
+    private boolean selected;
+
+
+
+    public ArrayList<ImageResult> getImageResults() {
+        return imageResults;
+    }
+
+
+    public MainRecyclerViewItem(boolean selected) {
         this.selected = selected;
-        this.mainImage = mainImage;
-        this.odaTitle = odaTitle;
-        this.odaPrice = odaPrice;
+    }
+
+    public MainRecyclerViewItem() {
+        this.selected = false;
     }
 
     public boolean isSelected() {
@@ -22,13 +57,6 @@ public class MainRecyclerViewItem {
 
     public void setSelected(boolean selected) {
         this.selected = selected;
-    }
-    public String getMainImage() {
-        return mainImage;
-    }
-
-    public void setMainImage(String mainImage) {
-        this.mainImage = mainImage;
     }
 
     public String getOdaTitle() {

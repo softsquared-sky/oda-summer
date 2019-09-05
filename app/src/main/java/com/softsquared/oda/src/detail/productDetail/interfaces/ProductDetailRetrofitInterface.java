@@ -2,6 +2,7 @@ package com.softsquared.oda.src.detail.productDetail.interfaces;
 
 import com.softsquared.oda.src.detail.productDetail.models.ProductDetailResponse;
 import com.softsquared.oda.src.login.models.LoginResponse;
+import com.softsquared.oda.src.main.models.MainResponse;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -14,7 +15,6 @@ public interface ProductDetailRetrofitInterface {
 
 
 
-
     @GET("/productDetail")
-    Call<ProductDetailResponse> getProductDetail(@Query("pNum")  int pNum);
+    Call<ProductDetailResponse> getProductDetail(@Query("pNum")  int productId);
 }

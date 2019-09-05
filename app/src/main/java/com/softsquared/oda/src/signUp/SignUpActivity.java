@@ -1,12 +1,14 @@
 package com.softsquared.oda.src.signUp;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -44,21 +46,21 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        mEtSignUpId = (EditText) findViewById(R.id.et_sign_up_id);
-        mEtSignUpPassword = (EditText) findViewById(R.id.et_sign_up_password);
-        mEtSignUpPasswordCheck = (EditText) findViewById(R.id.et_sign_up_password_check);
-        mEtSignUpBusinessNumber = (EditText) findViewById(R.id.et_sign_up_business_number);
-        mEtSignUpAddress = (EditText) findViewById(R.id.et_sign_up_address);
-        mEtSignUpExtraAddress = (EditText) findViewById(R.id.et_sign_up_extra_address);
-        mBtnSignUp = (Button) findViewById(R.id.btn_request_sign_up);
-        mBtnDupCheck = (Button) findViewById(R.id.btn_duplicate_check);
-
-        mBtnRgFood1 = (RadioGroup) findViewById(R.id.rg_food_1);
-        mBtnRgFood2 = (RadioGroup) findViewById(R.id.rg_food_2);
+        mEtSignUpId =  findViewById(R.id.et_sign_up_id);
+        mEtSignUpPassword =  findViewById(R.id.et_sign_up_password);
+        mEtSignUpPasswordCheck =  findViewById(R.id.et_sign_up_password_check);
+        mEtSignUpBusinessNumber =  findViewById(R.id.et_sign_up_business_number);
+        mEtSignUpAddress =  findViewById(R.id.et_sign_up_address);
+        mEtSignUpExtraAddress = findViewById(R.id.et_sign_up_extra_address);
+        mBtnSignUp = findViewById(R.id.btn_request_sign_up);
+        mBtnDupCheck =  findViewById(R.id.btn_duplicate_check);
+        mBtnRgFood1 =  findViewById(R.id.rg_food_1);
+        mBtnRgFood2 =findViewById(R.id.rg_food_2);
 
 
         mBtnRgFood1.setOnCheckedChangeListener(listener1);
         mBtnRgFood2.setOnCheckedChangeListener(listener2);
+
 
 
     }
@@ -101,11 +103,21 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
                 mEtSignUpExtraAddress.getText().length() > 0 &&
                 mType != 0);
         if (mBtnSignUp.isEnabled()) {
-            mBtnSignUp.setBackgroundResource(R.drawable.login_button_selector);
-            mBtnSignUp.setTextColor(getResources().getColor(R.color.login_text_selector));
+            mBtnSignUp.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+            mEtSignUpPassword.setBackground(null);
+            mEtSignUpPasswordCheck.setBackground(null);
+            mEtSignUpAddress.setBackground(null);
+            mEtSignUpExtraAddress.setBackground(null);
+            mEtSignUpBusinessNumber.setBackground(null);
+
+            mEtSignUpPassword.setTextColor(getResources().getColor(R.color.colorDark));
+            mEtSignUpPasswordCheck.setTextColor(getResources().getColor(R.color.colorDark));
+            mEtSignUpAddress.setTextColor(getResources().getColor(R.color.colorDark));
+            mEtSignUpExtraAddress.setTextColor(getResources().getColor(R.color.colorDark));
+            mEtSignUpBusinessNumber.setTextColor(getResources().getColor(R.color.colorDark));
         } else {
-            mBtnSignUp.setTextColor(getResources().getColor(R.color.colorWhite));
-            mBtnSignUp.setBackgroundResource(R.color.normalColor);
+            mBtnSignUp.setBackgroundColor(getResources().getColor(R.color.colorPaleGray));
         }
     }
 
@@ -226,10 +238,13 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         hideProgressDialog();
         showCustomToast(text);
         mDupCheck = true;
-        mBtnDupCheck.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        mBtnDupCheck.setBackground(getDrawable(R.drawable.btn_rectangle_shape_primary_radius_3dp));
         mBtnDupCheck.setText("사용가능");
         mBtnDupCheck.setTextColor(getResources().getColor(R.color.colorWhite));
         mBtnDupCheck.setEnabled(false);
+        mEtSignUpId.setBackground(null);
+        mEtSignUpId.setTextColor(getResources().getColor(R.color.colorDark));
+        mEtSignUpId.setEnabled(false);
     }
 
     public void validateDupFailure(String message) {
@@ -247,6 +262,23 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
     }
 
 
+    public void onClick(View view){
+
+        switch (view.getId()){
+            case R.id.iv_join_arrow_back :
+                finish();
+                break;
+
+            case R.id.btn_business_number_check:
+                showCustomToast(getString(R.string.no_access));
+                break;
+
+            case R.id.btn_find_address:
+                showCustomToast(getString(R.string.no_access));
+                break;
+        }
+
+    }
     public void btn_join(View view) {
 
         mId = mEtSignUpId.getText().toString();
@@ -255,11 +287,19 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         mAddress = mEtSignUpAddress.getText().toString();
         if (mDupCheck) {
 
+
             if (mPasswordCheck.equals(mPassword)) {
-                tryLoginAccess(mId, mPassword, mType, mAddress);
-            } else {
+                String regex = "^[a-z]+[a-z0-9]{3,10}$";
+                String id = mEtSignUpPasswordCheck.getText().toString();
+                if (Pattern.matches(regex, id)) {
+                    tryLoginAccess(mId, mPassword, mType, mAddress);
+                }
+                else{
+                    showCustomToast("pw는 5자 이상 15자 이하의 숫자와 소문자 조합으로 만들어주세요");
+                }
+            }
+            else {
                 Toast.makeText(this, "동일한 암호를 임력하세요.", Toast.LENGTH_SHORT).show();
-                mEtSignUpPasswordCheck.setFocusable(true);
             }
 
         } else {

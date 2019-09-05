@@ -1,6 +1,7 @@
 package com.softsquared.oda.src.search;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.softsquared.oda.src.BaseActivity;
 import com.softsquared.oda.src.search.recent.RecentListFragment;
+import com.softsquared.oda.src.shoppingCart.ShoppingCartActivity;
 import com.softsquared.odaproject.R;
 
 public class SearchActivity extends BaseActivity {
@@ -61,7 +63,7 @@ public class SearchActivity extends BaseActivity {
                 finish();
                 break;
             case  R.id.iv_search_shopping_cart :
-                showCustomToast(getString(R.string.no_access));
+                startActivity(new Intent(SearchActivity.this, ShoppingCartActivity.class));
                 break;
         }
     }

@@ -40,8 +40,8 @@ public class ProductReviewAdapter  extends BaseAdapter {
         final int pos = position;
         final ViewHolder holder;
 
-        //역순으로 보여주는 리스트뷰 출력만 역순으로 해준다
         ProductReviewItem productReviewItem = mProductReviewItemList.get(position);
+
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = mInflater.inflate(R.layout.fragment_detail_review_listview_item, parent, false);

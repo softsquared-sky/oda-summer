@@ -4,16 +4,18 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.softsquared.odaproject.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -22,7 +24,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     public static final int TYPE_ITEM = 1;
     public static int TYPE_FOOTER = 2;
 
-    private ArrayList<MainRecyclerViewItem> mData;
+    private ArrayList<MainRecyclerViewItem> mMainRecyclerViewItems;
     private RecyclerView mRecyclerView;
     LayoutInflater mInflater;
     Context mContext;
@@ -33,7 +35,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     // 생성자에서 데이터 리스트 객체를 전달받음.
     MainRecyclerViewAdapter(ArrayList<MainRecyclerViewItem> data, Context context) {
         this.mContext = context;
-        this.mData = data;
+        this.mMainRecyclerViewItems = data;
         this.mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         //Footer은 리스트의 마지막 사이즈보다 +1 이어야한다.
@@ -74,7 +76,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         } else {
             // Item을 하나, 하나 보여주는(bind 되는) 함수입니다.
             ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
-            itemViewHolder.onBind(mData.get(position));
+            itemViewHolder.onBind(mMainRecyclerViewItems.get(position));
         }
 
     }
@@ -83,7 +85,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public int getItemViewType(int position) {
 
-        if (position == mData.size())
+        if (position == mMainRecyclerViewItems.size())
             return TYPE_FOOTER;
         else
             return TYPE_ITEM;
@@ -93,11 +95,12 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     //헤더와 footer가 추가되었으므로 2를 리턴
     @Override
     public int getItemCount() {
-        return mData.size() + 1;
+        return mMainRecyclerViewItems.size() + 1;
     }
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     public class ItemViewHolder extends RecyclerView.ViewHolder {
+        ImageView tvOdaThumnail;
         TextView tvOdaTitle;
         TextView tvOdaPrice;
         CheckBox cbOdaCheck;
@@ -106,6 +109,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             super(itemView);
 
             // 뷰 객체에 대한 참조. (hold strong reference)
+            tvOdaThumnail = itemView.findViewById(R.id.iv_main_oda_thumnail);
             tvOdaTitle = itemView.findViewById(R.id.tv_main_oda_title);
             tvOdaPrice = itemView.findViewById(R.id.tv_main_oda_price);
             cbOdaCheck = itemView.findViewById(R.id.cb_main_oda_check);
@@ -133,8 +137,16 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         void onBind(final MainRecyclerViewItem data) {
 
+            Glide.with(mContext)
+                    .load(data.getImageResults().get(0).getImageUrl())
+                    .placeholder(R.mipmap.ic_launcher)
+                    .centerCrop()
+                    .into(tvOdaThumnail);
             tvOdaTitle.setText(data.getOdaTitle());
-            tvOdaPrice.setText(data.getOdaPrice() + "");
+
+            DecimalFormat myFormatter = new DecimalFormat("###,###");
+            String formattedStringPrice = myFormatter.format(data.getOdaPrice());
+            tvOdaPrice.setText(formattedStringPrice+"원");
 
             cbOdaCheck.setOnCheckedChangeListener(null);
             cbOdaCheck.setChecked(data.isSelected());
@@ -201,6 +213,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     public void allCheck(){
 
+        //미구현
 
     }
 

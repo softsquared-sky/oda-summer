@@ -9,11 +9,12 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/iv_main_recommend_image"
+            android:id="@+id/iv_main_oda_thumnail"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/main_image1"/>
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/tmp_thumnail_img"/>
 
         <CheckBox
             android:id="@+id/cb_main_oda_check"
@@ -31,10 +32,22 @@
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:ellipsize="end"
+        android:textSize="16sp"
         android:text="알랄라aaaaaaaaaaaa"/>
-    <TextView
-        android:id="@+id/tv_main_oda_price"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="오다가 9000"/>
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오다가 "/>
+        <TextView
+            android:id="@+id/tv_main_oda_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="9000"
+            android:textColor="@color/colorPrimary"/>
+    </LinearLayout>
+
 </LinearLayout>

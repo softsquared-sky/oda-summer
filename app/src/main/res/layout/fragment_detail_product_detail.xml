@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="30dp">
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/iv_detail_product_top_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:background="@color/colorWhite"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_test_detail_image" />
+    <TextView
+        android:id="@+id/tv_detail_product_title"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorNormalGray"
+        android:text="[해발500포크]냉장삼겹살수육용/찌개용/목심수육용(500g)"
+        />
+    <LinearLayout
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/colorNormalGray"
+            android:text="오다가"
+            />
+        <TextView
+            android:id="@+id/tv_detail_product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/colorPrimary"
+            android:text="14,500원"
+            />
+</LinearLayout>
 
     <TableLayout
         android:layout_margin="20dp"
@@ -30,14 +78,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorNormalGray"
+                android:layout_marginBottom="8dp"
                 android:text="포장 단위별 용량, 수량, 크기"
                 />
             <TextView
+                android:id="@+id/tv_detail_product_qpp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorNormalGray"
+                android:layout_marginBottom="8dp"
+
                 android:text="30개입 (1560g)"
                 />
         </TableRow>
@@ -56,14 +108,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorNormalGray"
+                android:layout_marginBottom="8dp"
+
                 android:text="보관방법 또는 취급방법"
                 />
             <TextView
+                android:id="@+id/tv_detail_product_store_method"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorNormalGray"
+                android:layout_marginBottom="8dp"
+
                 android:text="0~10도 이하 냉장보관"
                 />
         </TableRow>
@@ -79,14 +136,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorNormalGray"
+                android:layout_marginBottom="8dp"
+
                 android:text="원산지"
                 />
             <TextView
+                android:id="@+id/tv_detail_product_origin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorNormalGray"
+                android:layout_marginBottom="8dp"
+
                 android:text="국내산"
                 />
         </TableRow>
@@ -100,24 +162,32 @@
 
     </TableLayout>
 
-    <ImageView
+
+    <LinearLayout
+        android:id="@+id/detail_product_bottom_image_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/logo_background" />
+        android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:src="@drawable/logo_background" />
+        <ImageView
+            android:id="@+id/iv_detail_product_bottom_image1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/tmp_detail_sub_image1"/>
 
+        <ImageView
+            android:id="@+id/iv_detail_product_bottom_image2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/tmp_detail_sub_image2"
+           />
+    </LinearLayout>
 
 
 </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
