@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_my_page_product_thumnail"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:adjustViewBounds="true"
+        android:clickable="false"
+        android:focusable="false"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tmp_thumnail_img" />
+
+    <TextView
+        android:id="@+id/tv_my_page_product_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_my_page_product_thumnail"
+        android:layout_marginStart="14dp"
+        android:layout_toRightOf="@+id/iv_my_page_product_thumnail"
+        android:clickable="false"
+        android:ellipsize="end"
+        android:focusable="false"
+        android:maxEms="9"
+        android:maxLines="2"
+        android:text="GAP 무농약 뿌리없는새송이"
+        android:textColor="@color/colorNormalGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_my_page_delivery_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/tv_my_page_product_title"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="34dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="center_horizontal"
+        android:maxEms="4"
+        android:text="9/20\n도착예정"
+        android:textColor="@color/colorNormalGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_my_page_product_thumnail"
+        android:layout_marginStart="14dp"
+        android:layout_toRightOf="@+id/iv_my_page_product_thumnail"
+        android:clickable="false"
+        android:focusable="false"
+        android:text="오다가 "
+        android:textColor="@color/colorNormalGray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_my_page_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_temp"
+        android:layout_marginStart="6dp"
+        android:layout_toRightOf="@+id/tv_temp"
+        android:clickable="false"
+        android:focusable="false"
+        android:lineSpacingExtra="3sp"
+        android:text="9,000원 /"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_my_page_product_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_my_page_product_price"
+        android:layout_marginStart="6dp"
+        android:layout_toRightOf="@+id/tv_my_page_product_price"
+        android:clickable="false"
+        android:focusable="false"
+        android:lineSpacingExtra="3sp"
+        android:text="3개"
+        android:textColor="@color/colorNormalGray"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_my_page_delivery_tracking"
+        android:layout_width="90dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="17dp"
+        android:layout_alignBottom="@+id/tv_my_page_product_count"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/btn_rectacgle_shape_gray_radius_3dp"
+        android:onClick="onClick"
+        android:stateListAnimator="@null"
+        android:text="배송추적"
+        android:textColor="@color/colorGray"
+        android:textSize="14sp" />
+
+</RelativeLayout>

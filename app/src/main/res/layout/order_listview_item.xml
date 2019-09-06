@@ -9,7 +9,7 @@
         android:id="@+id/iv_order_product_thumnail"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="21dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="12dp"
         android:adjustViewBounds="true"

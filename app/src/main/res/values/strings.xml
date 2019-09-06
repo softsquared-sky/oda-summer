@@ -5,8 +5,10 @@
     <string name="title_activity_search">SearchActivity</string>
     <string name="invalidate_response">잘못된 응답입니다.</string>
     <string name="no_access">지원하지 않는 기능입니다.</string>
+    <string name="no_development">아직 준비중입니다.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="current_page">현재 페이지입니다.</string>
     <string name="action_settings">Settings</string>
     <string name="PDI">상품필수정보</string>
     <string name="detail_error">상세정보를 불러올 수 없습니다.</string>

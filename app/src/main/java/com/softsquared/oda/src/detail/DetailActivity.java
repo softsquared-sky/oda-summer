@@ -24,8 +24,8 @@ public class DetailActivity extends BaseActivity {
     String mProductTitle,mProductImage;
 
     ImageView mIvDetailProductImage,mIvDetailArrowBack,mIvDetailSearch,mIvDetailShoppingCart;
-    TextView mTvdetailProductTitle,mTvdetailProductPrice,mTvProductCount;
-    int mProductCount;
+    TextView mTvdetailProductTitle,mTvdetailProductPrice, mTvProductAmount;
+    int mProductAmount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +49,7 @@ public class DetailActivity extends BaseActivity {
         mIvDetailProductImage = findViewById(R.id.iv_detail_product_top_image);
         mTvdetailProductTitle = findViewById(R.id.tv_detail_product_title);
         mTvdetailProductPrice = findViewById(R.id.tv_detail_product_title);
-        mTvProductCount = findViewById(R.id.tv_detail_product_count);
+        mTvProductAmount = findViewById(R.id.tv_detail_product_count);
 
 
 
@@ -59,8 +59,8 @@ public class DetailActivity extends BaseActivity {
         mDetailViewPagerAdapter = new DetailViewPagerAdapter(getSupportFragmentManager(),mProductId,mProductImage,mProductTitle,mProductPrice); //Viewpager와 Fragment를 연결
         mDetailTabLayout.setupWithViewPager(mDetailViewPager); //Viewpager와 TabLayout을 연결해주는 코드!
         mDetailViewPager.setAdapter(mDetailViewPagerAdapter); //Viewpager에 선택된 fragment를 띄워준다.
-        mProductCount=1;
-        mTvProductCount.setText(mProductCount+"");
+        mProductAmount =1;
+        mTvProductAmount.setText(mProductAmount +"");
 
 
     }
@@ -84,14 +84,14 @@ public class DetailActivity extends BaseActivity {
                 startActivity(new Intent(DetailActivity.this, ShoppingCartActivity.class));
                 break;
             case R.id.btn_detail_decrement:
-                if(mProductCount>0){
-                    mProductCount--;
-                    mTvProductCount.setText(mProductCount+"");
+                if(mProductAmount >0){
+                    mProductAmount--;
+                    mTvProductAmount.setText(mProductAmount +"");
                 }
                 break;
             case R.id.btn_detail_increment:
-                mProductCount++;
-                mTvProductCount.setText(mProductCount+"");
+                mProductAmount++;
+                mTvProductAmount.setText(mProductAmount +"");
                 break;
             case R.id.btn_detail_add_shopping_cart:
                 //장바구니 담기 API

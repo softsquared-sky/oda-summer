@@ -13,10 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -55,7 +51,6 @@
                     android:textStyle="bold" />
 
             </RelativeLayout>
-        </FrameLayout>
 
     </LinearLayout>
 
@@ -120,29 +115,36 @@
 
 
                 <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_custom_main_bottom_home"
-                    />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_custom_main_bottom_category_gray"
-                    />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_custom_main_bottom_tip_gray"
-                    />
-
-                <ImageView
+                    android:id="@+id/iv_main_bottom_bar_home"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_custom_main_bottom_mypage_gray" />
+                    android:onClick="onClick"
+                    android:src="@drawable/ic_bottom_home_primary" />
+
+                <ImageView
+                    android:id="@+id/iv_main_bottom_bar_category"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:src="@drawable/ic_bottom_category_gray" />
+
+                <ImageView
+                    android:id="@+id/iv_main_bottom_bar_tip"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:src="@drawable/ic_bottom_tip_gray" />
+
+                <ImageView
+                    android:id="@+id/iv_main_bottom_bar_my_page"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:src="@drawable/ic_bottom_my_page_gray" />
 
 
             </LinearLayout>
@@ -157,47 +159,42 @@
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="홈"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
-                    />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:text="카테고리"
-                    android:gravity="center"
                     android:textColor="@color/colorGray"
-                    android:textSize="14sp"
-                    />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:text="꿀팁"
-                    android:gravity="center"
                     android:textColor="@color/colorGray"
-                    android:textSize="14sp"
-                    />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="마이페이지"
+                    android:layout_weight="1"
                     android:gravity="center"
+                    android:text="마이페이지"
                     android:textColor="@color/colorGray"
-                    android:textSize="14sp"
-                    />
-
-
+                    android:textSize="14sp" />
 
             </LinearLayout>
+
         </RelativeLayout>
 
 

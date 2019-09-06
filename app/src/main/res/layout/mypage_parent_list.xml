@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/normalColor">
+
+    <TextView
+        android:id="@+id/tv_my_page_parent_title"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginStart="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/colorNormalGray"
+        android:text="17/09/18 주문번호 17091800012"
+        android:maxLines="1"
+        android:ellipsize="end"
+        />
+</LinearLayout>

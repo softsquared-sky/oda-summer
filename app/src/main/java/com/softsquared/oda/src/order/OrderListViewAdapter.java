@@ -69,7 +69,7 @@ public class OrderListViewAdapter extends BaseAdapter {
         DecimalFormat myFormatter = new DecimalFormat("###,###");
         String formattedStringPrice = myFormatter.format(orderListViewItem.getProductPrice());
         holder.tvProductPrice.setText(formattedStringPrice+ '원' +'/');
-        holder.tvProductCount.setText(orderListViewItem.getProductCount()+"개");
+        holder.tvProductCount.setText(orderListViewItem.getProductAmount()+"개");
 
         return convertView;
     }

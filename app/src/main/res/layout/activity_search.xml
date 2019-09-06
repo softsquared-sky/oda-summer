@@ -37,7 +37,7 @@
                 android:background="@drawable/btn_rectangle_shape_white"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="10dp"
-                android:paddingStart="15dp"
+                android:paddingStart="14dp"
                 android:drawableTint="@color/colorGray"
                 android:hint="검색어를 입력하세요"
                 android:textSize="14sp" />

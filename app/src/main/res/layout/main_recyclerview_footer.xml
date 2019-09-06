@@ -7,8 +7,8 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/colorDark"
+        android:textSize="16sp"
+        android:textColor="@color/colorNormalGray"
         android:text="맨위로"
         />
 </LinearLayout>

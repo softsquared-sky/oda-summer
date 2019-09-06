@@ -105,7 +105,7 @@ public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAda
             mChildListViewHolder.ivProductDelete = convertView.findViewById(R.id.iv_shopping_cart_delete);
             mChildListViewHolder.tvProdcutTitle = convertView.findViewById(R.id.tv_shopping_cart_product_title);
             mChildListViewHolder.tvProductPrice = convertView.findViewById(R.id.tv_shopping_cart_product_price);
-            mChildListViewHolder.tvProductCount = convertView.findViewById(R.id.tv_shopping_cart_product_count);
+            mChildListViewHolder.tvProductAmount = convertView.findViewById(R.id.tv_shopping_cart_product_count);
             mChildListViewHolder.tvProdcutPlus = convertView.findViewById(R.id.tv_shopping_cart_increment);
             mChildListViewHolder.tvProductMinus = convertView.findViewById(R.id.tv_shopping_cart_decrement);
 
@@ -129,14 +129,14 @@ public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAda
         DecimalFormat myFormatter = new DecimalFormat("###,###");
         String formattedStringPrice = myFormatter.format(childData.getProductPrice());
         mChildListViewHolder.tvProductPrice.setText(formattedStringPrice+"원");
-        mChildListViewHolder.tvProductCount.setText(childData.getProductCount()+"");
+        mChildListViewHolder.tvProductAmount.setText(childData.getProductAmount()+"");
         mChildListViewHolder.tvProdcutTitle.setText(childData.getProductTitle());
 
         mChildListViewHolder.tvProdcutPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                childData.setProductCount(childData.getProductCount()+1);
-                mChildListViewHolder.tvProductCount.setText(childData.getProductCount()+"");
+                childData.setProductAmount(childData.getProductAmount()+1);
+                mChildListViewHolder.tvProductAmount.setText(childData.getProductAmount()+"");
                 notifyDataSetChanged();
             }
         });
@@ -144,9 +144,9 @@ public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAda
         mChildListViewHolder.tvProductMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(childData.getProductCount()>0){
-                childData.setProductCount(childData.getProductCount()-1);
-                mChildListViewHolder.tvProductCount.setText(childData.getProductCount()+"");
+                if(childData.getProductAmount()>0){
+                childData.setProductAmount(childData.getProductAmount()-1);
+                mChildListViewHolder.tvProductAmount.setText(childData.getProductAmount()+"");
                 notifyDataSetChanged();
                 }
                 else{
@@ -185,7 +185,7 @@ public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAda
 
     public class ChildListViewHolder {
         CheckBox cbProductCheck;
-        TextView tvProdcutTitle,tvProductPrice,tvProductCount,tvProdcutPlus,tvProductMinus;
+        TextView tvProdcutTitle,tvProductPrice, tvProductAmount,tvProdcutPlus,tvProductMinus;
         ImageView ivProductThumnail,ivProductDelete;
     }
 }

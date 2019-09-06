@@ -5,6 +5,7 @@ public class ShoppingCartListData {
     private String productImage;
     private String productTitle;
     private int productPrice;
+    private int productAmount;
 
     public void setProductImage(String productImage) {
         this.productImage = productImage;
@@ -18,22 +19,22 @@ public class ShoppingCartListData {
         this.productPrice = productPrice;
     }
 
-    public void setProductCount(int productCount) {
-        this.productCount = productCount;
+    public void setProductAmount(int productAmount) {
+        this.productAmount = productAmount;
     }
 
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
 
-    private int productCount;
 
-    public ShoppingCartListData(boolean selected, String productImage, String productTitle, int productPrice, int productCount) {
+
+    public ShoppingCartListData(boolean selected, String productImage, String productTitle, int productPrice, int productAmount) {
         this.selected = selected;
         this.productImage = productImage;
         this.productTitle = productTitle;
         this.productPrice = productPrice;
-        this.productCount = productCount;
+        this.productAmount = productAmount;
     }
 
 
@@ -53,7 +54,7 @@ public class ShoppingCartListData {
         return productPrice;
     }
 
-    public int getProductCount() {
-        return productCount;
+    public int getProductAmount() {
+        return productAmount;
     }
 }

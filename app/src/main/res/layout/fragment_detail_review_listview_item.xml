@@ -6,7 +6,7 @@
 
     <ImageView
         android:id="@+id/iv_detail_review_thumnail"
-        android:layout_marginStart="21dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="12dp"
         android:layout_width="70dp"

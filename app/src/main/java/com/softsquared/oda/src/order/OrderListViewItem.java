@@ -4,14 +4,14 @@ public class OrderListViewItem {
 
     private String productImage;
     private int productPrice;
-    private int productCount;
+    private int productAmount;
     private String productTitle;
 
-    public OrderListViewItem(String productImage, String productTitle, int productPrice, int productCount) {
+    public OrderListViewItem(String productImage, String productTitle, int productPrice, int productAmount) {
 
         this.productImage = productImage;
         this.productPrice = productPrice;
-        this.productCount = productCount;
+        this.productAmount = productAmount;
         this.productTitle = productTitle;
     }
 
@@ -32,12 +32,12 @@ public class OrderListViewItem {
         this.productPrice = productPrice;
     }
 
-    public int getProductCount() {
-        return productCount;
+    public int getProductAmount() {
+        return productAmount;
     }
 
-    public void setProductCount(int productCount) {
-        this.productCount = productCount;
+    public void setProductAmount(int productAmount) {
+        this.productAmount = productAmount;
     }
 
     public String getProductTitle() {

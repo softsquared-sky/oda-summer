@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
+            android:layout_marginStart="20dp"
             android:textSize="16sp"
             android:textColor="@color/colorNormalGray"
             android:text="바로 주문하기 선택상품 "

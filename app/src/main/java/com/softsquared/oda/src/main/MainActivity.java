@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.HorizontalScrollView;
 
 import com.softsquared.oda.src.detail.DetailActivity;
+import com.softsquared.oda.src.myPage.MyPageActivity;
 import com.softsquared.oda.src.search.SearchActivity;
 import com.softsquared.oda.src.shoppingCart.ShoppingCartActivity;
 import com.softsquared.odaproject.R;
@@ -119,6 +120,20 @@ public class MainActivity extends BaseActivity implements MainActivityView, View
                 } else {
                     mBtnAllCheck.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_checkbox_off, 0, 0, 0);
                 }
+            case R.id.iv_main_bottom_bar_home:
+                showCustomToast(getString(R.string.current_page));
+                break;
+            case R.id.iv_main_bottom_bar_category:
+                showCustomToast(getString(R.string.no_development));
+                break;
+            case R.id.iv_main_bottom_bar_tip:
+                showCustomToast(getString(R.string.no_development));
+                break;
+            case R.id.iv_main_bottom_bar_my_page:
+                Intent intent = new Intent(MainActivity.this, MyPageActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                break;
             default:
                 break;
         }
