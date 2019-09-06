@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_order_receipt_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="22dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:onClick="onClick"
+            android:src="@drawable/ic_close_white" />
+
+
+        <TextView
+            android:id="@+id/tv_order_header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="주문요청"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="@drawable/drop_shadow" />
+
+    <LinearLayout
+        android:layout_marginTop="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <FrameLayout
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_rectangle_shape_primary"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:orientation="vertical"
+                >
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="23dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/order_receipt_ok"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="16sp"
+                    android:text="상품정보"
+                    android:textColor="@color/colorNormalGray"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_order_receipt_product_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="14sp"
+                    android:text="특란 50구 외 4개의 상품"
+                    android:textColor="@color/colorNormalGray"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_order_receipt_product_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="14sp"
+                    android:text="예상 오다가 45,000원"
+                    android:textColor="@color/colorNormalGray"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="16sp"
+                    android:text="수령정보"
+                    android:textColor="@color/colorNormalGray"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_order_receipt_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="11sp"
+                    android:text="서울시 서대문구 연희동 45-1"
+                    android:textColor="@color/colorNormalGray"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_order_receipt_delivery_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="11sp"
+                    android:text="오전(7시-12시) 수령"
+                    android:textColor="@color/colorNormalGray"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+    </LinearLayout>
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:layout_marginTop="47dp"
+        android:textSize="15sp"
+        android:textColor="@color/colorGray"
+        android:lineSpacingExtra="4sp"
+        android:gravity="center_horizontal"
+        android:text="주문승인이 완료되면 푸시알림을 보내드립니다\n
+수령 후 일주일 내에 정산해주세요"
+        />
+
+</LinearLayout>

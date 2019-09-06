@@ -26,10 +26,10 @@ import static com.softsquared.oda.src.ApplicationClass.sSharedPreferences;
  */
 public class RecentListFragment extends Fragment {
     //    ArrayList<RecentListViewItem> mRecentItemArrayList = new ArrayList<>();
-//   private RecentListViewAdapter mLvRecentAdapter;
+//   private RecentListViewAdapter mRecentLvAdapter;
 //    ListView mLvRecent;
     private ArrayList<RecentListViewItem> mRecentItemList = new ArrayList<>();
-    private RecentListViewAdapter mLvRecentAdapter;
+    private RecentListViewAdapter mRecentLvAdapter;
     private ListView mLvRecent;
 //    private SharedPreferences mSharedPref;
     private Gson gson;
@@ -59,9 +59,8 @@ public class RecentListFragment extends Fragment {
 
 //        LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_recent,container,false);
         mLvRecent = (ListView) view.findViewById(R.id.lv_search_recent);
-        mLvRecentAdapter = new RecentListViewAdapter(mRecentItemList,getActivity());
-        mLvRecent.setAdapter(mLvRecentAdapter);
-        mLvRecent.setStackFromBottom(true);
+        mRecentLvAdapter = new RecentListViewAdapter(mRecentItemList,getActivity());
+        mLvRecent.setAdapter(mRecentLvAdapter);
 
         ((SearchActivity) getActivity()).refresh();
 
@@ -91,6 +90,6 @@ public class RecentListFragment extends Fragment {
     }
 
     public void addItem(String text) {
-        mLvRecentAdapter.addItem(text);
+        mRecentLvAdapter.addItem(text);
     }
 }

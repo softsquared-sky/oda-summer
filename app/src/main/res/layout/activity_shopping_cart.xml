@@ -22,7 +22,7 @@
 
 
         <TextView
-            android:id="@+id/tv_shopping_cart_title"
+            android:id="@+id/tv_shopping_cart_header_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -31,7 +31,10 @@
             android:textSize="22sp"
             android:textStyle="bold" />
     </RelativeLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="@drawable/drop_shadow" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,47 +59,57 @@
             />
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <ExpandableListView
-            android:id="@+id/expand_lv_shopping_cart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:groupIndicator="@null" />
 
-    </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/shopping_cart_inside_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <ExpandableListView
+        android:id="@+id/expand_lv_shopping_cart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:groupIndicator="@null" />
+
+    <LinearLayout
+        android:paddingBottom="18dp"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="82dp"
         android:orientation="vertical">
 
-       <LinearLayout
-           android:layout_marginTop="15dp"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal">
-           <TextView
-               android:layout_marginStart="25dp"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:textSize="16sp"
-               android:textColor="@color/colorNormalGray"
-               android:text="선택상품 예상 오다가"
-               />
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight="1"
-               android:layout_marginEnd="22dp"
-               android:layout_height="wrap_content"
-               android:textSize="16sp"
-               android:textColor="@color/colorNormalGray"
-               android:gravity="end"
-               android:text="  0원"
-               />
-       </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginStart="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorNormalGray"
+                android:text="선택상품 예상 오다가"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="22dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorNormalGray"
+                android:gravity="end"
+                android:text="  0원"
+                />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -112,7 +125,7 @@
                 />
 
             <TextView
-                android:layout_width="2dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="22dp"
                 android:layout_weight="1"
@@ -122,7 +135,34 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="22sp" />
         </LinearLayout>
+
     </LinearLayout>
+
+</LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_shopping_cart_empty_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:background="@color/colorShopBg"
+            android:textSize="16sp"
+            android:textColor="@color/colorGray"
+            android:text="장바구니가 비어있습니다"/>
+
+        <ImageView
+            android:id="@+id/tv_shopping_cart_empty_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
+            android:layout_gravity="center_horizontal|center"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_shopping_cart_empty"/>
+
+    </FrameLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp">

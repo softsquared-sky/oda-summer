@@ -18,6 +18,9 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:screenOrientation="portrait"
         tools:targetApi="n">
+
+        <activity android:name="com.softsquared.oda.src.orderReceipt.OrderReceiptActivity"/>
+        <activity android:name="com.softsquared.oda.src.order.OrderActivity"/>
         <activity android:name="com.softsquared.oda.src.shoppingCart.ShoppingCartActivity"/>
         <activity android:name="com.softsquared.oda.src.search.SearchActivity" />
         <activity android:name="com.softsquared.oda.src.signUp.SignUpActivity" />

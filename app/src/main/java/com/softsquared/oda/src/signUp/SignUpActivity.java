@@ -289,7 +289,7 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
 
             if (mPasswordCheck.equals(mPassword)) {
-                String regex = "^[a-z]+[a-z0-9]{3,10}$";
+                String regex = "^[0-9a-z]{5,15}$";
                 String id = mEtSignUpPasswordCheck.getText().toString();
                 if (Pattern.matches(regex, id)) {
                     tryLoginAccess(mId, mPassword, mType, mAddress);
@@ -308,7 +308,7 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
     }
 
     public void btn_duplicate_check(View view) {
-        String regex = "^[a-z]+[a-z0-9]{4,10}$";
+        String regex = "^[a-z0-9]{4,10}$";
         String id = mEtSignUpId.getText().toString();
 
         if (Pattern.matches(regex, id)) {

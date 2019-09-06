@@ -55,7 +55,7 @@
     </FrameLayout>
     <ImageView
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="6dp"
             android:background="@drawable/drop_shadow"/>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/search_tablayout"

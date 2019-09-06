@@ -11,7 +11,7 @@
     <color name="btnStrokeColor">#cccccc</color>
     <color name="colorPaleGray">#809b9b9b</color>
     <color name="colorNormalGray">#4a4a4a</color>
-
+    <color name="colorShopBg">#ededed</color>
     <drawable name="bg_select">#6fccd7</drawable>
     <drawable name="bg">#FFFFFF</drawable>
 

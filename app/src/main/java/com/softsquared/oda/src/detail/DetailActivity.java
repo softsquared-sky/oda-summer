@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.softsquared.oda.src.BaseActivity;
+import com.softsquared.oda.src.order.OrderActivity;
 import com.softsquared.oda.src.search.SearchActivity;
 import com.softsquared.oda.src.shoppingCart.ShoppingCartActivity;
 import com.softsquared.odaproject.R;
@@ -101,6 +102,7 @@ public class DetailActivity extends BaseActivity {
                 //장바구니 담기 API
                 //액티비티 전환 Ok -> 장바구니로
                 showCustomToast("장바구니 OK & 장바구니 페이지 이동");
+                startActivity(new Intent(DetailActivity.this, OrderActivity.class));
                 break;
             default:
                 break;

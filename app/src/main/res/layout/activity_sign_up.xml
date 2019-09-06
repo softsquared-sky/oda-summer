@@ -28,7 +28,7 @@
 
 
             <TextView
-                android:id="@+id/tv_sign_up"
+                android:id="@+id/tv_sign_up_header_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -43,7 +43,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="6dp"
             android:background="@drawable/drop_shadow" />
     </LinearLayout>
 
@@ -257,11 +257,13 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16sp"
+                        android:paddingStart="2dp"
                         android:text="요식업 종류" />
                 </LinearLayout>
 
                 <RadioGroup
                     android:id="@+id/rg_food_1"
+                    android:paddingStart="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -327,6 +329,7 @@
                     android:paddingTop="5dp">
 
                     <RadioButton
+                        android:paddingStart="2dp"
                         android:id="@+id/btn_radio_food_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -346,8 +349,7 @@
                         android:paddingStart="17dp"
                         android:gravity="center_horizontal"
                         android:text="@string/패스트푸드"
-                        android:textSize="16sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/btn_radio_food_8"

@@ -45,7 +45,7 @@
                     android:src="@drawable/ic_shopping_cart" />
 
                 <TextView
-                    android:id="@+id/main_title"
+                    android:id="@+id/main_header_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
