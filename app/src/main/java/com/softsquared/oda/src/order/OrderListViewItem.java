@@ -7,14 +7,19 @@ public class OrderListViewItem {
     private int productAmount;
     private String productTitle;
 
-    public OrderListViewItem(String productImage, String productTitle, int productPrice, int productAmount) {
-
+    public OrderListViewItem(int productId, String productImage,String productTitle, int productPrice, int productAmount) {
         this.productImage = productImage;
         this.productPrice = productPrice;
         this.productAmount = productAmount;
         this.productTitle = productTitle;
+        this.productId = productId;
     }
 
+    private int productId;
+
+    public int getProductId() {
+        return productId;
+    }
 
     public String getProductImage() {
         return productImage;

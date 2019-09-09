@@ -95,7 +95,6 @@ public class ProductDetailFragment extends Fragment implements ProductDetailFrag
 
     private void getProductDetailInfo() {
 
-
         final ProductDetailService productDetailService = new ProductDetailService(this);
         if(mProductId==0){
 
@@ -124,13 +123,11 @@ public class ProductDetailFragment extends Fragment implements ProductDetailFrag
            Glide.with(Objects.requireNonNull(activity))
                    .load((detailResult.getDetailImageResults().get(0)).getImageUrl())
                    .placeholder(R.mipmap.ic_launcher)
-                   .centerCrop()
                    .into(mIvProductBottomImage1);
 
         Glide.with(activity)
                 .load((detailResult.getDetailImageResults().get(1)).getImageUrl())
                 .placeholder(R.mipmap.ic_launcher)
-                .centerCrop()
                 .into(mIvProductBottomImage2);
        }
        else{

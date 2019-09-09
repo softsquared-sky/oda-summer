@@ -52,7 +52,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="260dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
 
@@ -87,7 +87,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
                     android:gravity="center_horizontal"
-                    android:lineSpacingExtra="14sp"
+                    android:ems="10"
+                    android:lineSpacingExtra="5sp"
                     android:text="특란 50구 외 4개의 상품"
                     android:textColor="@color/colorNormalGray"
                     android:textSize="16sp" />
@@ -124,6 +125,7 @@
                     android:layout_marginTop="6dp"
                     android:gravity="center_horizontal"
                     android:lineSpacingExtra="11sp"
+                    android:ems="7"
                     android:text="서울시 서대문구 연희동 45-1"
                     android:textColor="@color/colorNormalGray"
                     android:textSize="16sp" />
@@ -135,10 +137,11 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="6dp"
                     android:gravity="center_horizontal"
+                    android:paddingBottom="20dp"
                     android:lineSpacingExtra="11sp"
                     android:text="오전(7시-12시) 수령"
                     android:textColor="@color/colorNormalGray"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 

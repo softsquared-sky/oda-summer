@@ -7,6 +7,7 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface MainRetrofitInterface {
@@ -19,6 +20,9 @@ public interface MainRetrofitInterface {
 //            @Path("number") int number,
 //            @Query("content") final String content
 //    );
+
+    @POST("/directOrder")
+    Call<MainResponse> postQuickOrder(@Body RequestBody params);
 
     @GET("/product/productNum")
     Call<MainResponse> getBasicProductInfo(@Query("pNum") int productId );

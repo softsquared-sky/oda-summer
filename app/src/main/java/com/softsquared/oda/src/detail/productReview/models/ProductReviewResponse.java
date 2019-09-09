@@ -1,33 +1,19 @@
 package com.softsquared.oda.src.detail.productReview.models;
 
 import com.google.gson.annotations.SerializedName;
+import com.softsquared.oda.src.detail.productReview.ProductReviewItem;
 import com.softsquared.odaproject.R;
 
 import java.util.ArrayList;
 
 public class ProductReviewResponse {
     @SerializedName("result")
-    ArrayList<Result> result;
+   private ArrayList<ProductReviewItem> results;
 
     //ArrayList<ProductReviewItem>
-    public ArrayList<Result> getResults() {
-        return result;
+    public ArrayList<ProductReviewItem> getResults() {
+        return results;
     }
-
-    public class Result{
-
-        @SerializedName("id")
-        private String id;
-        @SerializedName("review")
-        private String review;
-        @SerializedName("reviewDate")
-        private String reviewDate;
-        @SerializedName("reviewImage")
-        private String reviewImage;
-
-    }
-    //이부분 ProductReviewItem으로 바꾸고
-
 
     @SerializedName("code")
     private int code;

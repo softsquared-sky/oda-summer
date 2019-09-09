@@ -83,11 +83,4 @@ public class RecentListViewAdapter extends BaseAdapter {
     }
 
 
-    // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(String title) {
-        RecentListViewItem item = new RecentListViewItem();
-        item.setTitle(title);
-        mRecentItemList.add(0,item);
-        //stackfrombottom 미 적용으로 인해 직접 0번부터 채워 넣는다.
-    }
 }

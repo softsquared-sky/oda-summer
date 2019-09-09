@@ -31,7 +31,6 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
 
 
-
     // 생성자에서 데이터 리스트 객체를 전달받음.
     MainRecyclerViewAdapter(ArrayList<MainRecyclerViewItem> data, Context context) {
         this.mContext = context;
@@ -39,6 +38,9 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         this.mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         //Footer은 리스트의 마지막 사이즈보다 +1 이어야한다.
+    }
+    public ArrayList<MainRecyclerViewItem> getMainItem(){
+        return mMainRecyclerViewItems;
     }
 
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
@@ -98,6 +100,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         return mMainRecyclerViewItems.size() + 1;
     }
 
+
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     public class ItemViewHolder extends RecyclerView.ViewHolder {
         ImageView tvOdaThumnail;
@@ -129,7 +132,6 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
                         if(mListener!=null){
                             mListener.OnItemClick(v,pos);
                         }
-
                     }
                 }
             });
@@ -155,6 +157,10 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 //set your object's last status
                     data.setSelected(isChecked);
+
+                    if(mCheckListener!=null){
+                        mCheckListener.OnCheckClick();
+                    }
                 }
             });
 
@@ -169,8 +175,19 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         void OnItemClick(View v,int pos);
     }
     private OnItemClickListener mListener=null;
+
     public void setOnItemClickListener(OnItemClickListener listener){
         this.mListener =listener;
+    }
+
+
+    public interface OnCheckedChangeListener {
+        void OnCheckClick();
+    }
+    private OnCheckedChangeListener mCheckListener=null;
+
+    public void setOnCheckedChangeListener(OnCheckedChangeListener listener){
+        this.mCheckListener =listener;
     }
 
 
@@ -211,11 +228,6 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
     }
 
-    public void allCheck(){
-
-        //미구현
-
-    }
 
 }
 

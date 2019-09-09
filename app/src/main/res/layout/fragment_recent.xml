@@ -12,6 +12,9 @@
         android:id="@+id/lv_search_recent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stackFromBottom="true"/>
+        android:stackFromBottom="true"
+        android:dividerHeight="0px"
+        android:divider="#ffffff"
+        />
 
 </LinearLayout>

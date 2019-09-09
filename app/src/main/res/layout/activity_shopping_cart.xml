@@ -45,12 +45,11 @@
             android:id="@+id/btn_shopping_cart_select_all_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="18dp"
             android:background="@android:color/transparent"
             android:buttonTint="@color/cursorColor"
             android:drawableStart="@drawable/ic_checkbox_off"
             android:drawablePadding="10dp"
-            android:drawableTint="@color/normalColor"
             android:lineSpacingExtra="10sp"
             android:enabled="false"
             android:text="전체선택"
@@ -63,8 +62,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-
-
 
     <LinearLayout
         android:id="@+id/shopping_cart_inside_linear_layout"
@@ -79,11 +76,8 @@
         android:groupIndicator="@null" />
 
     <LinearLayout
-        android:paddingBottom="18dp"
-        android:layout_gravity="bottom"
-        android:gravity="bottom"
         android:layout_width="match_parent"
-        android:layout_height="82dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -100,9 +94,10 @@
                 android:text="선택상품 예상 오다가"
                 />
             <TextView
+                android:id="@+id/tv_shopping_cart_estimated_price"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="22dp"
+                android:layout_marginEnd="24dp"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="@color/colorNormalGray"
@@ -113,7 +108,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            >
             <TextView
                 android:layout_marginStart="25dp"
                 android:layout_width="wrap_content"
@@ -125,15 +122,16 @@
                 />
 
             <TextView
+                android:id="@+id/tv_shopping_cart_total_estimated_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="22dp"
+                android:layout_marginEnd="24dp"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="6,000원"
-                android:textStyle="bold"
+                android:text="0원"
                 android:textColor="@color/colorPrimary"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
@@ -149,9 +147,12 @@
             android:background="@color/colorShopBg"
             android:textSize="16sp"
             android:textColor="@color/colorGray"
-            android:text="장바구니가 비어있습니다"/>
+            android:text="장바구니가 비어있습니다"
+            android:visibility="gone"
+            />
 
         <ImageView
+            android:visibility="gone"
             android:id="@+id/tv_shopping_cart_empty_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

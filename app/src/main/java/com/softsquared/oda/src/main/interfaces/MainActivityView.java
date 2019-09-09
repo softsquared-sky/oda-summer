@@ -8,4 +8,8 @@ public interface MainActivityView {
     void validateSuccess(MainRecyclerViewItem items);
 
     void validateFailure(String message);
+
+
+    void validateQuickOrderSuccess(String text);
+    void validateQuickOrderFailure(String message);
 }

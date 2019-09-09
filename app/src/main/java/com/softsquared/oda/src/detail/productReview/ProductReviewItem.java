@@ -1,14 +1,19 @@
 package com.softsquared.oda.src.detail.productReview;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ProductReviewItem {
-    private String reviewImage;
 
-
-    private String reviewTitle;
-    private String reviewDate;
+    @SerializedName("id")
     private String id;
-    private String reviewContent;
-
+    @SerializedName("reviewTitle")
+    private String reviewTitle;
+    @SerializedName("review")
+    private String review;
+    @SerializedName("reviewDate")
+    private String reviewDate;
+    @SerializedName("reviewImage")
+    private String reviewImage;
 
 
     public ProductReviewItem(String reviewImage, String reviewTitle, String reviewDate, String id, String reviewContent) {
@@ -16,7 +21,7 @@ public class ProductReviewItem {
         this.reviewTitle = reviewTitle;
         this.reviewDate = reviewDate;
         this.id = id;
-        this.reviewContent = reviewContent;
+        this.review = reviewContent;
     }
 
     public String getReviewTitle() {
@@ -28,11 +33,11 @@ public class ProductReviewItem {
     }
 
     public String getReviewContent() {
-        return reviewContent;
+        return review;
     }
 
     public void setReviewContent(String reviewContent) {
-        this.reviewContent = reviewContent;
+        this.review = reviewContent;
     }
 
 

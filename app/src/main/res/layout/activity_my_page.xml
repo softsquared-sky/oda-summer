@@ -160,17 +160,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
+
         <TextView
             android:id="@+id/tv_my_page_total_order_count"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginStart="18dp"
             android:layout_height="match_parent"
-            android:textSize="14sp"
+            android:layout_marginStart="18dp"
+            android:layout_weight="1"
             android:gravity="center_vertical"
+            android:text="총 0개"
             android:textColor="@color/colorNormalGray"
-            android:text="총 123개"
-            />
+            android:textSize="14sp" />
 
         <Spinner
             android:id="@+id/spn_my_page_sort"

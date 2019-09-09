@@ -1,69 +1,84 @@
 package com.softsquared.oda.src.myPage;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+
 public class MyPageListData {
 
-    private String productThumnail;
-    private String productTitle;
-    private int productPrice;
-    private int productAmount;
-    private String deliveryDay;
-    private boolean deliveryStatus;
+    @SerializedName("payDate")
+    private String payDate;
 
-    public MyPageListData(String productThumnail, String productTitle, int productPrice, int productAmount, String deliveryDay, boolean deliveryStatus) {
-        this.productThumnail = productThumnail;
-        this.productTitle = productTitle;
-        this.productPrice = productPrice;
-        this.productAmount = productAmount;
-        this.deliveryDay = deliveryDay;
-        this.deliveryStatus = deliveryStatus;
-    }
+    @SerializedName("deliveryStatus")
+    private String deliveryStatus;
 
-
-    public String getProductThumnail() {
-        return productThumnail;
-    }
-
-    public void setProductThumnail(String productThumnail) {
-        this.productThumnail = productThumnail;
-    }
-
-    public String getProductTitle() {
-        return productTitle;
-    }
-
-    public void setProductTitle(String productTitle) {
-        this.productTitle = productTitle;
-    }
-
-    public int getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(int productPrice) {
-        this.productPrice = productPrice;
-    }
-
-    public int getProductAmount() {
-        return productAmount;
-    }
-
-    public void setProductAmount(int productAmount) {
-        this.productAmount = productAmount;
-    }
-
-    public String getDeliveryDay() {
-        return deliveryDay;
-    }
-
-    public void setDeliveryDay(String deliveryDay) {
-        this.deliveryDay = deliveryDay;
-    }
-
-    public boolean getDeliveryStatus() {
+    public String getDeliveryStatus() {
         return deliveryStatus;
     }
 
-    public void setDeliveryStatus(boolean deliveryStatus) {
-        this.deliveryStatus = deliveryStatus;
+    public String getPayDate() {
+        return payDate;
     }
+
+    public int getPayDegree() {
+        return payDegree;
+    }
+
+    @SerializedName("payDegree")
+    private int payDegree;
+
+    public MyPageListData(String payDate, String deliveryStatus, int payDegree, ArrayList<OrderList> orderLists) {
+        this.payDate = payDate;
+        this.deliveryStatus = deliveryStatus;
+        this.payDegree = payDegree;
+        this.orderLists = orderLists;
+    }
+
+    @SerializedName("orderList")
+    private ArrayList<OrderList> orderLists;
+
+    public ArrayList<OrderList> getOrderLists() {
+        return orderLists;
+    }
+
+    public class OrderList {
+
+        @SerializedName("pNum")
+        private int productId;
+        @SerializedName("imageUrl")
+        private String productThumnail;
+        @SerializedName("pName")
+        private String productTitle;
+        @SerializedName("odaPrice")
+        private int productPrice;
+        @SerializedName("amount")
+        private int productAmount;
+        @SerializedName("paySeq")
+        private int paySeq;
+
+        public int getProductId() {
+            return productId;
+        }
+
+        public String getProductThumnail() {
+            return productThumnail;
+        }
+
+        public String getProductTitle() {
+            return productTitle;
+        }
+
+        public int getProductPrice() {
+            return productPrice;
+        }
+
+        public int getProductAmount() {
+            return productAmount;
+        }
+
+        public int getPaySeq(){return paySeq;}
+
+
+    }
+
 }

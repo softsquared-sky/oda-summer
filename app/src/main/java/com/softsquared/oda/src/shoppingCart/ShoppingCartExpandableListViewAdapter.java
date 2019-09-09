@@ -19,7 +19,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAdapter {
+public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAdapter  {
 
     private Context mContext;
     private ArrayList<String> mParentList; //제목이니까 String으로 받아도 된다.
@@ -62,7 +62,6 @@ public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAda
 
         // ParentList의 Layout 연결 후, 해당 layout 내 TextView를 연결
         TextView parentText = convertView.findViewById(R.id.tv_shopping_cart_parent_title);
-        System.out.println(getGroup(groupPosition));
         String str = getGroup(groupPosition);
         parentText.setText(str);
 
@@ -80,7 +79,6 @@ public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAda
     @Override
     public int getChildrenCount(int groupPosition) { // ChildList의 크기를 int 형으로 반환
         return this.mChildHashMap.get(this.mParentList.get(groupPosition)).size();
-
     }
 
     @Override
@@ -123,6 +121,7 @@ public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAda
                 //원소 지우기
                 mChildHashMap.get(mParentList.get(gP)).remove(cP);
                 notifyDataSetChanged();
+                ((ShoppingCartActivity)mContext).controller();
             }
         });
 
@@ -138,7 +137,12 @@ public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAda
                 childData.setProductAmount(childData.getProductAmount()+1);
                 mChildListViewHolder.tvProductAmount.setText(childData.getProductAmount()+"");
                 notifyDataSetChanged();
+
+                if(mListener!=null){
+                    mListener.OnCheckClick(true);
+                }
             }
+
         });
 
         mChildListViewHolder.tvProductMinus.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +155,10 @@ public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAda
                 }
                 else{
                     ((BaseActivity)mContext).showCustomToast("올바른 수량을 입력해주세요");
+                }
+
+                if(mListener!=null){
+                    mListener.OnCheckClick(true);
                 }
             }
         });
@@ -168,12 +176,24 @@ public class ShoppingCartExpandableListViewAdapter extends BaseExpandableListAda
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 //set your object's last status
                 childData.setSelected(isChecked);
+                if(mListener!=null){
+                    mListener.OnCheckClick(isChecked);
+                }
             }
         });
 
-
         return convertView;
 
+    }
+
+
+    public interface customOnCheckedChangeListener {
+        void OnCheckClick(boolean isChecked);
+    }
+    private customOnCheckedChangeListener mListener=null;
+
+    public void setCustomOnCheckedChangeListener(customOnCheckedChangeListener listener){
+        this.mListener =listener;
     }
 
     @Override

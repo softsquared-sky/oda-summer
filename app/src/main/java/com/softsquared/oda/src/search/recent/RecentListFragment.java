@@ -90,6 +90,13 @@ public class RecentListFragment extends Fragment {
     }
 
     public void addItem(String text) {
-        mRecentLvAdapter.addItem(text);
+
+        if (mRecentItemList.contains(text)){
+            mRecentItemList.remove(mRecentItemList.indexOf(text));
+            mRecentItemList.add(0,new RecentListViewItem(text));
+        }
+        else{
+            mRecentItemList.add(0,new RecentListViewItem(text));
+        }
     }
-}
+    }

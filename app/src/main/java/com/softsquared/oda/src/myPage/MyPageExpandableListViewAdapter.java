@@ -14,6 +14,7 @@ import com.softsquared.oda.src.BaseActivity;
 import com.softsquared.odaproject.R;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -116,30 +117,36 @@ public class MyPageExpandableListViewAdapter extends BaseExpandableListAdapter {
             }
             else {
                 Glide.with(mContext)
-                        .load(childData.getProductThumnail())
+                        .load(childData.getOrderLists().get(cP).getProductThumnail())
                         .placeholder(R.mipmap.ic_launcher)
                         .centerCrop()
                         .into(mMyPageChildListViewHolder.ivProductThumnail);
 
             }
-            mMyPageChildListViewHolder.tvProdcutTitle.setText(childData.getProductTitle());
+            mMyPageChildListViewHolder.tvProdcutTitle.setText(childData.getOrderLists().get(childPosition).getProductTitle());
 
+            //원
             DecimalFormat myFormatter = new DecimalFormat("###,###");
-            String formattedStringPrice = myFormatter.format(childData.getProductPrice());
-            mMyPageChildListViewHolder.tvProductPrice.setText(formattedStringPrice+"원");
-            mMyPageChildListViewHolder.tvProductCount.setText(childData.getProductAmount()+"개");
-            mMyPageChildListViewHolder.tvDeliveryDay.setText(childData.getDeliveryDay());
-            if (childData.getDeliveryStatus()){
+            String formattedStringPrice = myFormatter.format(childData.getOrderLists().get(childPosition).getProductPrice());
+            mMyPageChildListViewHolder.tvProductPrice.setText(formattedStringPrice+"원 /");
+            //개수
+            mMyPageChildListViewHolder.tvProductCount.setText(childData.getOrderLists().get(childPosition).getProductAmount()+"개");
+
+            if (childData.getDeliveryStatus().equals("배송중")){
                 //true
                 mMyPageChildListViewHolder.btnDeliveryStatus.setBackground(mContext.getDrawable(R.drawable.btn_rectacgle_shape_gray_radius_3dp));
                 mMyPageChildListViewHolder.btnDeliveryStatus.setText("배송추적");
                 mMyPageChildListViewHolder.btnDeliveryStatus.setTextColor(mContext.getResources().getColor(R.color.colorGray));
                 mMyPageChildListViewHolder.btnDeliveryStatus.setEnabled(true);
+
+                mMyPageChildListViewHolder.tvDeliveryDay.setText(childData.getPayDate().substring(4)+"\n도착예정");
             } else{
                 mMyPageChildListViewHolder.btnDeliveryStatus.setBackground(mContext.getDrawable(R.drawable.btn_rectangle_shape_primary_radius_3dp));
                 mMyPageChildListViewHolder.btnDeliveryStatus.setText("배송완료");
                 mMyPageChildListViewHolder.btnDeliveryStatus.setTextColor(mContext.getResources().getColor(R.color.colorWhite));
                 mMyPageChildListViewHolder.btnDeliveryStatus.setEnabled(false);
+                mMyPageChildListViewHolder.tvDeliveryDay.setText(childData.getPayDate().substring(4)+" 도착");
+
             }
 
             mMyPageChildListViewHolder.btnDeliveryStatus.setOnClickListener(new View.OnClickListener() {

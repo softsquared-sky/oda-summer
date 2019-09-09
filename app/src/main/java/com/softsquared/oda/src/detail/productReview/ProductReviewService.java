@@ -1,6 +1,7 @@
 package com.softsquared.oda.src.detail.productReview;
 
 import android.content.res.Resources;
+import android.util.Log;
 
 import com.softsquared.oda.src.detail.productReview.interfaces.ProductReviewFragmentView;
 import com.softsquared.oda.src.detail.productReview.interfaces.ProductReviewRetrofitInterface;
@@ -37,9 +38,12 @@ public class ProductReviewService {
 
                 } else if (productReviewResponse.getCode() == 600) {
                     //리뷰가 있을때
-                    mProductReviewFragmentView.validateSuccess(productReviewResponse.getMessage());
+                    mProductReviewFragmentView.validateSuccess(productReviewResponse.getResults());
                 } else if(productReviewResponse.getCode() == 610){
-                    mProductReviewFragmentView.validateFailure(Resources.getSystem().getString(R.string.unload_review));
+                    mProductReviewFragmentView.validateFailure("상품 후기가 없습니다.");
+                }
+                else{
+                    mProductReviewFragmentView.validateFailure(null);
                 }
             }
 

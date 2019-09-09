@@ -28,10 +28,10 @@ public class ProductReviewFragment extends Fragment implements ProductReviewFrag
     public ProductReviewFragment(int productId) {
 
         mProductId=productId;
-        for(int i=0;i<10;i++) {
-            mProductReviewItemList.add( new ProductReviewItem(null, i + "번째 리뷰 제목", "2019-09-04", "jhw**** 님",
-                    "dummy dummy 너무 yummy yummy 하네요 좋습니다"));
-        }
+//        for(int i=0;i<10;i++) {
+//            mProductReviewItemList.add( new ProductReviewItem(null, i + "번째 리뷰 제목", "2019-09-04", "jhw**** 님",
+//                    "dummy dummy 너무 yummy yummy 하네요 좋습니다"));
+//        }
     }
 
 
@@ -65,6 +65,8 @@ public class ProductReviewFragment extends Fragment implements ProductReviewFrag
                 ((DetailActivity) getActivity()).showCustomToast(getString(R.string.no_access));
             }
         });
+
+        getProductReview();
         return view;
     }
 
@@ -77,19 +79,27 @@ public class ProductReviewFragment extends Fragment implements ProductReviewFrag
 
 
     @Override
-    public void validateSuccess(String text) {
+    public void validateSuccess(ArrayList<ProductReviewItem> items) {
 
         //값을 받아온다음에 add해주면 끝!
         ( (BaseActivity)getActivity()).hideProgressDialog();
 
-//        mProductReviewItemList.add(items);
-//        mLvProductReviewAdapter.notifyDataSetChanged();
+        for (int i=0;i<items.size();i++){
+
+            mProductReviewItemList.add(items.get(i));
+        }
+        mLvProductReviewAdapter.notifyDataSetChanged();
 
     }
 
     @Override
     public void validateFailure(String message) {
         ( (BaseActivity)getActivity()).hideProgressDialog();
-        ( (BaseActivity)getActivity()).showCustomToast("리뷰를 불러올 수 없습니다.");
+        ( (BaseActivity)getActivity()).showCustomToast(message == null || message.isEmpty() ? "리뷰를 불러올 수 없습니다." : message);
+        for(int i=0;i<20;i++) {
+            mProductReviewItemList.add( new ProductReviewItem(null, i + "번째 리뷰 제목", "2019-09-04", "jhw**** 님",
+                    "dummy dummy 너무 yummy yummy 하네요 좋습니다"));
+        }
+        mLvProductReviewAdapter.notifyDataSetChanged();
     }
 }

@@ -1,11 +1,42 @@
 package com.softsquared.oda.src.shoppingCart;
 
-public class ShoppingCartListData {
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class ShoppingCartListData implements Serializable {
     private boolean selected;
+    @SerializedName("imageUrl")
     private String productImage;
+    @SerializedName("pName")
     private String productTitle;
+    @SerializedName("odaPrice")
     private int productPrice;
+
+    public int getProductId() {
+        return productId;
+    }
+
+    @SerializedName("pNum")
+    private int productId;
+
+    @SerializedName("stoke")
+    private int stoke;
+
+    public int getStoke() {
+        return stoke;
+    }
+
+
     private int productAmount;
+
+
+    @SerializedName("type")
+    private String type;
+
+    public String getType() {
+        return type;
+    }
 
     public void setProductImage(String productImage) {
         this.productImage = productImage;
@@ -26,7 +57,6 @@ public class ShoppingCartListData {
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
-
 
 
     public ShoppingCartListData(boolean selected, String productImage, String productTitle, int productPrice, int productAmount) {
