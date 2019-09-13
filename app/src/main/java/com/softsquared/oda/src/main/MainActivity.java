@@ -201,7 +201,7 @@ public class MainActivity extends BaseActivity implements MainActivityView, View
     public void validateQuickOrderSuccess(String text) {
         hideProgressDialog();
         showCustomToast(text);
-        //장바구니로 이동하기
+        startActivity(new Intent(MainActivity.this, ShoppingCartActivity.class));//장바구니로 이동하기
     }
 
     @Override

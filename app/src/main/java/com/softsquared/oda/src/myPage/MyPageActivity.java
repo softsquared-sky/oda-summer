@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.softsquared.oda.src.BaseActivity;
 import com.softsquared.oda.src.main.MainActivity;
@@ -13,7 +14,9 @@ import com.softsquared.oda.src.myPage.Interfaces.MyPageActivityView;
 import com.softsquared.oda.src.setting.SettingActivity;
 import com.softsquared.odaproject.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class MyPageActivity extends BaseActivity implements MyPageActivityView {
@@ -22,6 +25,7 @@ public class MyPageActivity extends BaseActivity implements MyPageActivityView {
     private ArrayAdapter mSpnArrayAdapter;
     private ExpandableListView mMyPageExpandableListView; // ExpandableListView 변수 선언
     private MyPageExpandableListViewAdapter mMyPageExpandableLvAdapter; // 위 ExpandableListView를 받을 CustomAdapter(2번 class에 해당)를 선언
+    private TextView mTvMyPageTotalAmount;
 
     ArrayList<String> mOrderNumber =new ArrayList<>(); // ExpandableListView의 Parent 항목이 될 List 변수 선언
     ArrayList<MyPageListData> mProductList =new ArrayList<>(); // ExpandableListView의 Child 항목이 될 List를 각각 선언
@@ -34,14 +38,13 @@ public class MyPageActivity extends BaseActivity implements MyPageActivityView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
         mMyPageSpn = findViewById(R.id.spn_my_page_sort);
-
+        mTvMyPageTotalAmount=findViewById(R.id.tv_my_page_total_order_count);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("최신순");
         arrayList.add("오래된순");
         mSpnArrayAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.custom_spinner_item, arrayList);
         mMyPageSpn.setAdapter(mSpnArrayAdapter);
         mMyPageExpandableListView = findViewById(R.id.expand_lv_my_page);
-
         mOrderNumber=new ArrayList<>();
         mProductList=new ArrayList<>();
         mChildList=new HashMap<>();
@@ -61,7 +64,6 @@ public class MyPageActivity extends BaseActivity implements MyPageActivityView {
         mMyPageExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                showCustomToast("gP: " + groupPosition + "cP : " + childPosition);
                 return false;
             }
         });
@@ -110,18 +112,20 @@ public class MyPageActivity extends BaseActivity implements MyPageActivityView {
     public void validateSuccess(String message, ArrayList<MyPageListData> items) {
 
         hideProgressDialog();
+        int count=0;
         for (int i = 0; i < items.size(); i++) {
             MyPageListData temp = items.get(i);
-
-            mOrderNumber.add("주문번호" + temp.getPayDate() + temp.getPayDegree());
-            mProductList.clear();
+            mOrderNumber.add(0,temp.getPayDate().substring(2,4)+"/"+temp.getPayDate().substring(4,6)+"/"+temp.getPayDate().substring(6,8)+"  주문번호 " + temp.getPayDate() + temp.getPayDegree());
+            ArrayList<MyPageListData> childList=new ArrayList<>();
             for (int j = 0; j < temp.getOrderLists().size(); j++) {
-                mProductList.add(items.get(j));
+                childList.add(new MyPageListData(temp.getPayDate(),temp.getDeliveryStatus(),temp.getPayDegree(),temp.getOrderLists()));
+                count++;
             }
-            mChildList.put(mOrderNumber.get(i), mProductList);
+            mChildList.put(mOrderNumber.get(0), childList);//0번째 인자에 항상 새로운 값이 들어오기 때문이다.
         }
         // 앞서 정의해 놓은 ExpandableListView와 그 CustomAdapter를 선언 및 연결한 후
         // ExpandableListView에 대한 OnClickListener 등을 선언
+        mTvMyPageTotalAmount.setText("총 "+count+"개");
 
 
         mMyPageExpandableLvAdapter = new MyPageExpandableListViewAdapter(this, mOrderNumber, mChildList);

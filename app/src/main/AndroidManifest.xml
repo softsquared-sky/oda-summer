@@ -19,6 +19,8 @@
         android:screenOrientation="portrait"
         tools:targetApi="n">
 
+
+        <activity android:name="com.softsquared.oda.src.searchList.SearchListActivity"/>
         <activity android:name="com.softsquared.oda.src.myPage.MyPageActivity"/>
         <activity android:name="com.softsquared.oda.src.setting.SettingActivity"/>
         <activity android:name="com.softsquared.oda.src.orderReceipt.OrderReceiptActivity"/>

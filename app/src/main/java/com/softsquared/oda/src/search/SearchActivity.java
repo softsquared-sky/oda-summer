@@ -15,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.softsquared.oda.src.BaseActivity;
 import com.softsquared.oda.src.search.recent.RecentListFragment;
+import com.softsquared.oda.src.searchList.SearchListActivity;
 import com.softsquared.oda.src.shoppingCart.ShoppingCartActivity;
 import com.softsquared.odaproject.R;
 
@@ -48,6 +49,11 @@ public class SearchActivity extends BaseActivity {
                     ((RecentListFragment) mViewPagerAdapter.getItem(0)).addItem(result);
                     refresh();
                     hideKeyboard();
+
+                    Intent intent = new Intent(SearchActivity.this,SearchListActivity.class);
+                    intent.putExtra("pName",result);
+                    startActivity(intent);
+
                     return true;
                 }
                 return false;
